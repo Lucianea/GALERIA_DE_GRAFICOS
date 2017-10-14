@@ -1,0 +1,96 @@
+---
+title: "Gráfico de Barras"
+author: "DATAUNIRIO"
+output: 
+   html_document:
+     theme: flatly
+     highlight: tango
+---
+<head>
+<style>
+body {
+    background-color:#fdf6e3;
+}
+</style>
+</head>
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(RcmdrMisc)
+```
+
+Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
+
+```{r pizza, message=FALSE, warning=FALSE}
+data(mtcars)
+mtcars <- within(mtcars, {
+  am <- factor(am, labels=c('Automático','Manual'))
+})
+mtcars <- within(mtcars, {
+  vs <- factor(vs, labels=c('Não','Sim'))
+})
+par(bg="#fdf6e3") 
+
+contagem = table(mtcars$am)
+nomes = levels(mtcars$am)
+porcent = round(contagem/sum(contagem)*100,2)
+rotulo=paste(nomes," (",porcent,"%",")",sep="")
+barras<-barplot(table(mtcars$am), ylab="Frequência", main="Tipo de marcha", col=c("red","blue"))
+text(barras, 0, rotulo,cex=1,pos=3,col ="#ffffff")
+
+contagem2 = table(mtcars$vs)
+nomes2 = levels(mtcars$vs)
+porcent2 = round(contagem2/sum(contagem2)*100,2)
+rotulo2=paste(nomes2," (",porcent2,"%",")",sep="")
+pie(table(mtcars$vs),labels=rotulo2, main="Tipo", col=c("#003154","#dd4a37"))
+barras2<-barplot(table(mtcars$vs), ylab="Frequência", main="Tipo", col=c("#003154","#dd4a37"))
+text(barras2, 0, rotulo,cex=1,pos=3,col ="#ffffff")
+
+```
+
+# Gráficos de Barras "GAP"
+```{r barrasGAP, message=FALSE, warning=FALSE}
+library(RColorBrewer)
+par(bg="#fdf6e3") 
+#display.brewer.all()
+COR<-brewer.pal(4,"Dark2")
+#COR
+
+library(plotrix)
+twogrp<-c(rnorm(10)+4,rnorm(10)+20)
+ gap.barplot(twogrp,gap=c(8,16),xlab="Index",ytics=c(3,6,17,20),
+  ylab="Group values",main="Barplot with gap")
+gap.barplot(twogrp,gap=c(8,16),xlab="Index",ytics=c(3,6,17,20),
+  ylab="Valores",horiz=TRUE,main="GrÁfico de Barras com um'GAP'")
+
+ set.seed(1001)
+ bvals <- matrix(rpois(12,20),nrow=3)
+ b <- symbolbarplot(bvals)
+
+mtcars$FaixaHP <- with(mtcars, bin.var(hp, bins=4, method='natural', 
+  labels=c('Baxissímo HP','Baixo HP','Alto HP','Altíssimo HP')))
+dados<-data.frame(table(mtcars$FaixaHP))
+
+```
+
+# Barras no ggplot2
+
+```{r barrasggplot}
+
+library(ggplot2)
+```
+
+# Modificação das Barras no ggplot2
+
+```{r barrasggplot2, message=FALSE, warning=FALSE}
+dados = data.frame(round(contagem/sum(contagem)*100,2))
+dados <- within(dados, {
+  Var1 <- factor(Var1, labels=c('Automático','Manual'))
+})
+attach(dados)
+dados <- dados[order(Freq),] 
+detach(dados)
+```
+
+Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.

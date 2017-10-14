@@ -20,6 +20,8 @@ knitr::opts_chunk$set(echo = TRUE)
 require(RcmdrMisc)
 ```
 
+Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
+
 ```{r pizza, message=FALSE, warning=FALSE}
 data(mtcars)
 mtcars <- within(mtcars, {
@@ -112,5 +114,6 @@ pizza+ scale_fill_brewer(palette="Dark2") +  theme_economist() +
   geom_text(aes(y = Freq/2 + c(0, cumsum(Freq)[-length(Freq)]), 
                 label = percent(Freq/100)), size=5)
   
+```
 
-  ```
+Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
