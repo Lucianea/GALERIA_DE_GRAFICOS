@@ -1,0 +1,116 @@
+---
+title: "Gráfico de Pizza"
+author: "DATAUNIRIO"
+output: 
+   html_document:
+     theme: flatly
+     highlight: tango
+---
+<head>
+<style>
+body {
+    background-color:#fdf6e3;
+}
+</style>
+</head>
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(RcmdrMisc)
+```
+
+```{r pizza, message=FALSE, warning=FALSE}
+data(mtcars)
+mtcars <- within(mtcars, {
+  am <- factor(am, labels=c('Automático','Manual'))
+})
+mtcars <- within(mtcars, {
+  vs <- factor(vs, labels=c('Não','Sim'))
+})
+par(bg="#fdf6e3") 
+
+# Fonte: Apostila do Prof. Felipe Ribeiro
+contagem = table(mtcars$am)
+nomes = levels(mtcars$am)
+porcent = round(contagem/sum(contagem)*100,2)
+rotulo=paste(nomes," (",porcent,"%",")",sep="")
+pie(table(mtcars$am),labels=rotulo, main="Tipo de marcha", col=c("red","blue"))
+
+contagem2 = table(mtcars$vs)
+nomes2 = levels(mtcars$vs)
+porcent2 = round(contagem2/sum(contagem2)*100,2)
+rotulo2=paste(nomes2," (",porcent2,"%",")",sep="")
+pie(table(mtcars$vs),labels=rotulo2, main="Tipo", col=c("#003154","#dd4a37"))
+```
+
+# Pizza 3D
+```{r pizza3D, message=FALSE, warning=FALSE}
+library(RColorBrewer)
+par(bg="#fdf6e3") 
+#display.brewer.all()
+COR<-brewer.pal(4,"Dark2")
+#COR
+
+library(plotrix)
+pieval<-c(0.1,0.15,0.25,0.5)
+pielabels<-
+  c("A gente odeia\n Pizza","Fazemos oposição\n às Pizzas","Não me importo\n com Pizza","Eu AMO pizza")
+pielabels2=paste(pielabels,"\n",pieval,sep="")
+pie3D(pieval,radius=0.95,labels=pielabels2,explode=0.1,main="Opinião sobre a Pizza em 3D",
+  col=COR)
+
+pie3D(table(mtcars$am),labels=rotulo,radius=0.9,explode=0.2, main="Pizza 3D do Tipo de marcha", col=c("red","blue"))
+
+pie3D(table(mtcars$vs),labels=rotulo2, main="Pizza 3D do Tipo", col=c("#003154","#dd4a37"))
+```
+
+# Pizza no ggplot2
+
+```{r pizzaggplot}
+
+library(ggplot2)
+pizza<-ggplot(mtcars, aes(x=factor(1), fill=am))+
+  geom_bar(width = 1)+
+  coord_polar("y")
+pizza+ theme(plot.background = element_rect(fill = "#e2ded3", colour = "#e2ded3"))
+```
+
+# Modificação da pizza no ggplot2
+
+```{r pizzaggplot2, message=FALSE, warning=FALSE}
+dados = data.frame(round(contagem/sum(contagem)*100,2))
+dados <- within(dados, {
+  Var1 <- factor(Var1, labels=c('Automático','Manual'))
+})
+attach(dados)
+dados <- dados[order(Freq),] 
+detach(dados)
+blank_theme <- theme_minimal()+
+  theme(
+  axis.title.x = element_blank(),
+  axis.title.y = element_blank(),
+  panel.border = element_blank(),
+  panel.grid=element_blank(),
+  axis.ticks = element_blank(),
+  plot.title=element_text(size=14, face="bold")
+  )
+
+
+library(scales)
+pizza<-ggplot(dados, aes(x="", y=Freq, fill=Var1))+
+  geom_bar(width = 1, stat = "identity")+
+  coord_polar("y")
+
+pizza + scale_fill_brewer(palette="Dark2") +  blank_theme +
+  theme(axis.text.x=element_blank()) +
+  geom_text(aes(y = Freq/2 + c(0, cumsum(Freq)[-length(Freq)]), 
+            label = percent(Freq/100)), data = dados, size=5)
+
+library("ggthemes")
+pizza+ scale_fill_brewer(palette="Dark2") +  theme_economist() +
+  geom_text(aes(y = Freq/2 + c(0, cumsum(Freq)[-length(Freq)]), 
+                label = percent(Freq/100)), size=5)
+  
+
+  ```
