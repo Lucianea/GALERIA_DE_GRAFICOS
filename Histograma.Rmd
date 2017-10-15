@@ -1,0 +1,77 @@
+---
+title: "Histograma"
+author: "DATAUNIRIO"
+output: 
+   html_document:
+     theme: flatly
+     highlight: tango
+---
+<head>
+<style>
+body {
+    background-color:#fdf6e3;
+}
+</style>
+</head>
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(RcmdrMisc)
+```
+
+Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
+
+```{r pizza, message=FALSE, warning=FALSE}
+data(mtcars)
+mtcars <- within(mtcars, {
+  am <- factor(am, labels=c('Automático','Manual'))
+})
+mtcars <- within(mtcars, {
+  vs <- factor(vs, labels=c('Não','Sim'))
+})
+par(bg="#fdf6e3") 
+
+# Fonte: Apostila do Prof. Felipe Ribeiro
+
+```
+
+# Pizza 3D
+```{r pizza3D, message=FALSE, warning=FALSE}
+library(RColorBrewer)
+par(bg="#fdf6e3") 
+#display.brewer.all()
+COR<-brewer.pal(4,"Dark2")
+#COR
+
+library(plotrix)
+
+```
+
+# Pizza no ggplot2
+
+```{r pizzaggplot}
+
+```
+
+# Modificação da pizza no ggplot2
+
+```{r pizzaggplot2, message=FALSE, warning=FALSE}
+
+```
+
+# Alternativas ao Histograma
+
+## Histograma por gruposStack
+
+```{r histStack, message=FALSE, warning=FALSE}
+par(bg="#fdf6e3") 
+library(plotrix)
+df<-data.frame(len=rnorm(100)+5,
+   grp=sample(c("A","B","C","D"),100,replace=TRUE))
+  histStack(len~grp,data=df,main="Default (rainbow) colors",
+   xlab="Length category")
+
+```
+
+Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
