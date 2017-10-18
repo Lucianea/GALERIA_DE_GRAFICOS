@@ -22,9 +22,13 @@ require(RcmdrMisc)
 
 Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
 
-Para que serve: O gráfico de pizza é uma maneira de resumir a informação de uma variável qualitativa/categórica. Serve para comparar quantidades em cada categoria. 
+Definição: O gráfico de pizza (de setores) é um diagrama circular onde os valores de cada categoria representada são proporcionais às frequências (fatia da pizza).
+
+Para que serve: O gráfico de pizza é uma maneira de resumir a informação de uma variável [qualitativa/categórica](http://www.portalaction.com.br/estatistica-basica/13-exposicao-dos-dados#qualitativo_nominal). Serve para comparar quantidades em cada categoria. 
 
 Uma variável é chamada qualitativa, também conhecida como categórica, se seus valores pertencem a uma coleção de classes não superpostas. Exemplos comuns incluem notas de letra de estudante (A, B, C, D ou F), classificação de algo (Baixo, médio ou alto), Sexo (Feminino ou Masculino).
+
+Os tutoriais desta seção são baseados em um banco de dados interno do R chamado mtcars. Consiste em uma coleção de informações sobre 32 carros. 
 
 ```{r pizza, message=FALSE, warning=FALSE}
 data(mtcars)
