@@ -151,24 +151,20 @@ geom_text(aes(label = round(prop.table(..count..)*100,2), y= ..count.. ), stat= 
 
 # Alternativas ao Gráfico de Barras
 
-## Gráficos de pontos "Dotplot" para variáveis discretas.
+## MOSAICO
 
-Descrição. Um gráfico de pontos consiste em pontos de dados plotados em uma escala bastante simples, geralmente usando círculos preenchidos. É um tipo de gráfico utilizado na estatística para conjuntos de dados relativamente pequenos onde os valores se enquadram em uma série de barras discretas (categorias). Um gráfico de pontos é semelhante a um gráfico de barras porque a altura de cada "barra" de pontos é igual ao número de itens em uma categoria específica. 
+Descrição. 
 
 ```{r dotplot, message=FALSE, warning=FALSE}
-library(plotrix)  
-x <- rpois(100,10)
-dotplot.mtb(x,yaxis=TRUE,main="Dotplot")
+
 ```
 
 ## Gráfico com Barras preenchidas com símbolos
 
-Descrição. Produz um gráfico de barras onde cada unidade de 'barra' é preenchida com o número de símbolos igual ao tamanho da barra.
+Descrição. 
 
 ```{r symbolbarplot, message=FALSE, warning=FALSE}
-set.seed(1001)
-bvals <- matrix(rpois(12,20),nrow=3)
-b <- symbolbarplot(bvals)
+
 ```
 
 Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.

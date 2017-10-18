@@ -22,55 +22,54 @@ require(RcmdrMisc)
 
 Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
 
-```{r pizza, message=FALSE, warning=FALSE}
-data(mtcars)
-mtcars <- within(mtcars, {
-  am <- factor(am, labels=c('Automático','Manual'))
-})
-mtcars <- within(mtcars, {
-  vs <- factor(vs, labels=c('Não','Sim'))
-})
-par(bg="#fdf6e3") 
+Definição: um diagrama em formato de retângulos cuja área é proporcional à frequência de uma variável quantitativa e cuja largura é igual ao intervalo de classe.
 
-# Fonte: Apostila do Prof. Felipe Ribeiro
+Para que serve: Um histograma é uma representação gráfica da distribuição de uma variável quantitativa (dados numéricos). Com o histograma pode-se visualizar a dispersão/concentração dos dados, bem como a assimetria/simetria dos dados. É muito utilizado para visualizar toda a distribuição de uma variável quantitativa. Foi introduzida pela primeira vez por Karl Pearson (OBS - É muito parecido com o gráfico de barras).
+
+```{r histograma, message=FALSE, warning=FALSE}
+par(bg="#fdf6e3") 
+data(mtcars)
+hist(mtcars$mpg,col="steelblue")
 
 ```
 
-# Pizza 3D
-```{r pizza3D, message=FALSE, warning=FALSE}
+# Histograma
+```{r Histograma2, message=FALSE, warning=FALSE}
 library(RColorBrewer)
 par(bg="#fdf6e3") 
 #display.brewer.all()
-COR<-brewer.pal(4,"Dark2")
+COR<-brewer.pal(5,"Blues")
+
 #COR
-
-library(plotrix)
-
-```
-
-# Pizza no ggplot2
-
-```{r pizzaggplot}
+hist(mtcars$mpg,col=COR,main="Histograma do MPG",xlab = "Milhas por Galão - MPG", ylab = "Frequência")
+COR<-brewer.pal(5,"YlGn")
+Hist(mtcars$mpg,col=COR, scale="percent",main="Histograma do MPG",xlab = "Milhas por Galão - MPG", ylab = "Percentual")
 
 ```
 
-# Modificação da pizza no ggplot2
+# Histograma no ggplot2
 
-```{r pizzaggplot2, message=FALSE, warning=FALSE}
+```{r histogramaggplot, message=FALSE, warning=FALSE}
+
+```
+
+# Modificação do Histograma no ggplot2
+
+```{r histogramaggplot2, message=FALSE, warning=FALSE}
 
 ```
 
 # Alternativas ao Histograma
 
-## Histograma por gruposStack
+## Histograma por grupos 'Stack'
 
 ```{r histStack, message=FALSE, warning=FALSE}
 par(bg="#fdf6e3") 
 library(plotrix)
 df<-data.frame(len=rnorm(100)+5,
    grp=sample(c("A","B","C","D"),100,replace=TRUE))
-  histStack(len~grp,data=df,main="Default (rainbow) colors",
-   xlab="Length category")
+  histStack(len~grp,data=df,main="Histograma por grupos",
+   xlab="grupos")
 
 ```
 
