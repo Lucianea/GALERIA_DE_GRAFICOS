@@ -31,6 +31,7 @@ Uma variável é chamada qualitativa, também conhecida como categórica, se seu
 Os tutoriais desta seção são baseados em um banco de dados interno do R chamado mtcars. Consiste em uma coleção de informações sobre 32 carros. 
 
 ```{r pizza, message=FALSE, warning=FALSE}
+## Este script cria um "grafico de pizza" semelhante ao produzido pelo DATAUNIRIO
 data(mtcars)
 mtcars <- within(mtcars, {
   am <- factor(am, labels=c('Automático','Manual'))
