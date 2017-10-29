@@ -4,9 +4,10 @@
 body {
     /*background: linear-gradient(330deg, #919fad 0%, #748ea8 25%, #52769b 50%, #305882 75%, #1f4c7a 100%);*/
     background: linear-gradient(330deg, #0b2738 0%, #133d56 25%, #133d56 50%, #184f70 75%, #246c96 100%);
+	font-family: 'Amatic SC', cursive;
 }
 
-
+ 
 .textWithBlurredBg{
     width:300px;
     height:200px;
