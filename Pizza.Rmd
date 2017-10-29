@@ -199,5 +199,59 @@ iucn.df<-data.frame(area=c("África","Ásia","Europa","América do Norte",
    main="Espécies ameaçadas por continente (fan.plot)",ticks=276)
 ```
 
+## Gráficos do tipo Visualização em círculo "Circle Visualisation".
+```{r CircleVisualisation, message=FALSE, warning=FALSE}
+
+library(packcircles)
+library(ggplot2)
+continente <- circleProgressiveLayout(iucn.df)
+dat1 <- circleLayoutVertices(continente)
+ggplot(data = dat1) +
+  geom_polygon(aes(x, y, group = id, fill = factor(id)), 
+               colour = "black",
+               show.legend = FALSE) +
+  scale_fill_manual(values = iucn.df$area) +
+  scale_y_reverse() +
+  coord_equal()
+#########################################################################################
+library(RColorBrewer)
+#display.brewer.all()
+COR6<-brewer.pal(6,"YlGnBu")
+library(bubbles)
+bubbles(value = iucn.df$threatened,
+        color = COR6,
+        label = iucn.df$area,
+        width=800, height=800)  
+#########################################################################################
+t <- theme_bw() + 
+  theme(panel.grid = element_blank(), 
+        axis.text=element_blank(),
+        axis.ticks=element_blank(), 
+        axis.title=element_blank())
+theme_set(t)
+# circle areas
+areas <- 1:1000
+# arrange circles from small to large
+packing1 <- circleProgressiveLayout(areas)
+dat1 <- circleLayoutVertices(packing1)
+# arrange same circles from large to small
+packing2 <- circleProgressiveLayout( rev(areas) ) 
+dat2 <- circleLayoutVertices(packing2)
+dat <- rbind( 
+  cbind(dat1, set = 1), 
+  cbind(dat2, set = 2) )
+ggplot(data = dat, aes(x, y)) + 
+  geom_polygon(aes(group = id, fill = -id), 
+               colour = "black", show.legend = FALSE) +
+  scale_fill_distiller(palette = "RdGy") +
+  coord_equal() +
+  facet_wrap(~set, 
+             labeller = as_labeller(
+               c('1' = "small circles first", 
+                 '2' = "big circles first"))
+  )
+```
+
+
 
 Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
