@@ -50,14 +50,58 @@ Hist(mtcars$mpg,col=COR, scale="percent",main="Histograma do MPG",xlab = "Milhas
 # Histograma no ggplot2
 
 ```{r histogramaggplot, message=FALSE, warning=FALSE}
-
+par(bg="#fdf6e3") 
+library(ggplot2)
+ggplot(mtcars, aes(mpg)) +
+  geom_histogram()
+# Change color
+ggplot(mtcars, aes(mpg)) +
+  geom_histogram(color="#45ad8a", fill="#417f6a")
 ```
 
 # Modificação do Histograma no ggplot2
 
 ```{r histogramaggplot2, message=FALSE, warning=FALSE}
+par(bg="#fdf6e3") 
+library(ggplot2)
+ggplot(mtcars, aes(y =..density..,mpg, fill = factor(am)))+
+  geom_histogram(binwidth = 1.5)
+
+ggplot(mtcars, aes(y =..density..,mpg, fill = factor(am)))+
+  geom_histogram(binwidth = 1.5)+
+  geom_density(alpha = .1) 
+
 
 ```
+
+# Histograma Avançado no ggplot2
+
+```{r histogramaggplot3, message=FALSE, warning=FALSE}
+par(bg="#fdf6e3") 
+df <- data.frame(
+  sex=factor(rep(c("F", "M"), each=200)),
+  weight=round(c(rnorm(200, mean=55, sd=5), rnorm(200, mean=65, sd=5)))
+  )
+head(df)
+library(ggplot2)
+p<-ggplot(df, aes(x=weight)) + 
+  geom_histogram()
+# Add mean line
+p+ geom_vline(aes(xintercept=mean(weight)),
+            color="blue", linetype="dashed", size=1)
+
+ggplot(df, aes(x=weight, fill =sex, color=sex)) +
+  geom_histogram(alpha=0.8, position="identity")
+
+# Change line colors by groups
+ggplot(df, aes(x=weight, fill =sex, color=sex)) +
+  geom_histogram(alpha=0.8, position="identity")+
+  scale_color_manual(values=c("#999999", "#E69F00", "#56B4E9"))+
+  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9"))+
+  labs(title="Histograma no ggplot2",x="Peso(kg)", y = "Contagem")+
+  theme_classic()
+```
+
 
 # Alternativas ao Histograma
 
