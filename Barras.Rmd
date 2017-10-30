@@ -111,7 +111,6 @@ attach(dados)
 dados <- dados[order(Freq),] 
 detach(dados)
 
-
 # Fora das Barras
 ggplot(data=dados, aes(x=Var1, y=Freq)) +
   geom_bar(stat="identity", fill="steelblue")+
@@ -146,8 +145,21 @@ ggplot(data=BaseUF, aes(x=Regiao_Geografica)) +
   geom_bar(stat="count", fill=c("#10c6d3","#0ea5af","#0b8b93","#096c72","#064144"))+
 geom_text(aes(label = round(prop.table(..count..)*100,2), y= ..count.. ), stat= "count", vjust=1.6, color="white",size=5.5) +
   labs(y = "Percentual", fill="Regiao_Geografica")
-  
+
+error <- c(9, 6)
+# adding error bars
+plt<-ggplot(data=dados, aes(x=Var1, y=Freq)) +
+  geom_bar(stat="identity", fill="#275b70")+
+  geom_text(aes(label=Freq), vjust=1.6, color="white",size=3.5)+
+  ylab("Frequência") +
+  xlab("Tipo") +
+  theme_minimal()
+
+plt +  geom_errorbar(aes(ymin=Freq-error, ymax=Freq+error), width=.1, position=position_dodge(.1))  
 ```
+
+
+
 
 # Alternativas ao Gráfico de Barras
 
@@ -169,6 +181,71 @@ Descrição. Produz um gráfico de barras onde cada unidade de 'barra' é preenc
 set.seed(1001)
 bvals <- matrix(rpois(12,20),nrow=3)
 b <- symbolbarplot(bvals)
+```
+```{r barplots, message=FALSE, warning=FALSE}
+require(ggplot2)
+
+# function 
+ruler.bar.plot <-function(gg, nn, mjtick =1, mntick = 0.2, mjtickcol = "black", mntickcol = "white"){
+seq.list<-list()
+for(i in 1:length(gg)){
+  ystart<-seq(mntick ,gg[i],mntick )
+  yend<-ystart
+  xstart<-rep(i-0.45,length(ystart))
+  xend<-xstart+0.1
+  nam.val<-c(nn[i],rep(NA,length(ystart)-1))
+  numb.val<-c(gg[i],rep(NA,length(ystart)-1))
+  seq.list[[i]]<-data.frame(nam.val,numb.val,xstart,xend,ystart,yend)
+}
+df<-as.data.frame(do.call(rbind, seq.list))
+p <- ggplot(df, aes(nam.val))
+p + geom_bar(aes(y=numb.val,fill=nam.val),stat="identity",width=0.5,color=mjtickcol,lwd=1.1) +
+        geom_segment(aes(x=xstart,y=ystart,xend=xend,yend=yend), color=mjtickcol) +
+        ylim(c(0,max(gg)+0.5))  + scale_x_discrete(limits= nn) +
+            geom_hline(yintercept=seq(mjtick,max(gg),mjtick),color=mntickcol,lwd=1.1)+   geom_text(aes (y = numb.val, label = numb.val), vjust= - 1 ) +
+    guides(fill=FALSE) +
+         theme_bw()+
+    theme(axis.title=element_blank(),
+               axis.text.y=element_blank(),
+               axis.text.x=element_text(angle=90,face="bold",size=rel(1.5)),
+               axis.ticks=element_blank(),
+               panel.background = element_rect(fill = mntickcol),
+               panel.border=element_blank(),
+               panel.grid=element_blank(),
+               legend.position = "none")
+}
+
+# human height in inches, ticking done at each 12
+htinch <- c(66, 72, 88, 54)
+id <- c("A", "B", "C", "D")
+ruler.bar.plot(htinch, id, mjtick =12, mntick = 1,  mjtickcol = "black", mntickcol = "white")
+VV = c(0.13, 0.33, 0.82, 0.46)
+LV = c("A", "C", "L", "N")
+ruler.bar.plot(VV, LV, mjtick =0.1, mntick = 0.02,  mjtickcol = "black", mntickcol = "white")
+```
+
+#Gráfico de Barras Circular
+
+```{r barplots2, message=FALSE, warning=FALSE}
+#circular bar plot 
+library(ggplot2)
+#DATA
+catg <- c("A", "B", "C", "D", "F", "G")
+percent <- c(88, 76, 72, 69, 59, 48)
+category <- paste (catg, "-", percent, "%", sep = "")
+myd <-data.frame(category,percent)
+# converting to factor and applying to 
+#levels to set proper order of bars 
+myd$category <-factor(myd$category,levels=rev(myd$category))
+# plot
+plt <- ggplot(myd, aes(x = category, y = percent,fill = category)) + geom_bar(width = 0.85, stat="identity") +    coord_polar(theta = "y") +    xlab("") + ylab("") +
+    ylim(c(0,100)) + ggtitle("Graph 1") +    geom_text(data = myd, hjust = 1, size = 3, aes(x = category, y = 0, label = category)) 
+
+plt +  scale_fill_manual(values = c("red1","red4", "green1", "green4", "blue1", "blue4")) + theme_minimal() + theme(legend.position = "none",panel.grid.major = element_blank(),panel.grid.minor = element_blank(),          axis.line = element_blank(),axis.text.y = element_blank(),          axis.text.x = element_blank(), axis.ticks = element_blank())
+```
+
+```{r barplots3, message=FALSE, warning=FALSE}
+
 ```
 
 Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
