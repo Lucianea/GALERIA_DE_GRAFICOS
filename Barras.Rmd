@@ -92,6 +92,7 @@ ggplot(data=mtcars, aes(x=am)) +
 
 #install.packages('RCurl')
 library(RCurl)
+#X <- read.csv(url("http://some.where.net/data/foo.csv"))
 x <- getURL("https://raw.githubusercontent.com/DATAUNIRIO/Base_de_dados/master/Estados.csv")
 BaseUF <- read.csv(text=x, header=T, quote="", sep=";",dec = ",")
 ggplot(data=BaseUF, aes(x=Regiao_Geografica)) +

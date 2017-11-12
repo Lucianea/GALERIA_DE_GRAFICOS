@@ -1,5 +1,5 @@
 ---
-title: "Violin Box plot "
+title: "Violin Box plot"
 author: "DATAUNIRIO"
 output: 
    html_document:
@@ -19,28 +19,23 @@ body {
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Hexabin XY scatter plot and transparent point XY plot R Markdown
+## Violin Box plot
 
 ```{r}
 # data
- RG#18: Violin Box plot
+
 #Violin box plot
 #data
- set.seed (45)
+set.seed (45)
 xv <- rnorm(500, 50,15)
 gv <- c(rep("A",100), rep("B",100), rep("C",100), rep("D",100), rep("E", 100))
 dataf <- data.frame(xv, gv)
-
-
 #plot
 require(lattice)
 library("latticeExtra")
 bwplot(xv, panel = panel.violin, box.ratio = 3, xlab="y(units)")
 
-
- bwplot(xv~gv, data=dataf, panel = panel.violin, box.ratio = 3, xlab="y(units)", col = "green4")
-
-
+bwplot(xv~gv, data=dataf, panel = panel.violin, box.ratio = 3, xlab="y(units)", col = "green4")
 
 # using vioplot 
 require(vioplot)
@@ -51,7 +46,7 @@ colMed="white", pchMed=19, add=FALSE, wex=1,drawRect=TRUE  )
 vioplot(xv[1:100], xv[101:200], xv[201:300], xv[301:400], xv[401:500],col="white", border="red", lty=1, lwd=1, rectCol="red",
 colMed="yellow", pchMed=19, add=TRUE, wex=1,drawRect=TRUE  )
 
- set.seed (45)
+set.seed (45)
 xv <- rnorm(500, 50,15)
 pch1 <- rep(1:5, each = 100)
 

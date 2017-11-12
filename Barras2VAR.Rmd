@@ -1,5 +1,5 @@
 ---
-title: "Gráfico de Barras"
+title: "Gráfico de Barras com duas variáveis"
 author: "DATAUNIRIO"
 output: 
    html_document:
@@ -17,154 +17,209 @@ body {
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+#http://bradleyboehmke.github.io/tutorials/barchart
+
 require(RcmdrMisc)
+library(gridExtra)
+
+#load("C:/Users/Hp/Documents/GitHub/Base_de_dados/Titanic.RData")
 ```
 
 Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
 
-Para que serve: O gráfico de barras é uma maneira de resumir a informação de uma variável qualitativa/categórica. 
-
-Uma variável é chamada qualitativa, também conhecida como categórica, se seus valores pertencem a uma coleção de classes não superpostas. Exemplos comuns incluem notas de letra de estudante (A, B, C, D ou F), classificação de algo (Baixo, médio ou alto), Sexo (Feminino ou Masculino).
-
-Há vantagem do uso do gráfico de barras sobre o gráfico de pizza quando temos variáveis ordinais ou quando há muitas categorias de análise.
+Para que serve: O gráfico de barras é uma maneira de resumir a informação de duas ou mais variáveis qualitativas. 
 
 
 ```{r barras, message=FALSE, warning=FALSE}
-data(mtcars)
-mtcars <- within(mtcars, {
-  am <- factor(am, labels=c('Automático','Manual'))
-})
-mtcars <- within(mtcars, {
-  vs <- factor(vs, labels=c('Não','Sim'))
-})
-par(bg="#fdf6e3") 
-
-contagem = table(mtcars$am)
-nomes = levels(mtcars$am)
-porcent = round(prop.table(contagem)*100,2)
-rotulo=paste(nomes," (",porcent,"%",")",sep="")
-barras<-barplot(table(mtcars$am), ylab="Frequência", main="Tipo de marcha", col=c("red","blue"))
-text(barras, 0, rotulo,cex=1,pos=3,col ="#ffffff")
-
-contagem2 = table(mtcars$vs)
-nomes2 = levels(mtcars$vs)
-porcent2 = round(prop.table(contagem2)*100,2)
-rotulo2=paste(nomes2," (",porcent2,"%",")",sep="")
-barras2<-barplot(table(mtcars$vs), ylab="Frequência", main="Tipo", col=c("#003154","#dd4a37"))
-text(barras2, 0, rotulo,cex=1,pos=3,col ="#ffffff")
+par(bg="#fdf6e3")
+load(url("https://raw.githubusercontent.com/DATAUNIRIO/Base_de_dados/master/Titanic.RData"))
+#legenda
+nomes = levels(Titanic$Classe)
+nomes
+# percentual da linha ou da coluna
+#porcent = prop.table(bartable)*100   # percentual do total
+#porcentlinha = prop.table(bartable,1)*100 # percentual da linha
+#porcentcoluna = prop.table(bartable,1)*100 # percentual da coluna
+bartable = table(Titanic$Classe, Titanic$Sobreviveu)  ## get the cross tab
+porcentlinha = round(prop.table(bartable,1)*100,1) # percentual da linha arrendondada para uma casa decimal
+# Método simples
+rotulo=paste(porcentlinha)
+barras<-barplot(bartable, beside = TRUE, legend = levels(unique(Titanic$Classe)),col=c("black","skyblue","royalblue","darkblue"))  ## plot 
+text(barras, 0, rotulo,cex=1,pos=3, col ="#ffffff")
 ```
+
+
 
 ```{r barras2, message=FALSE, warning=FALSE}
 par(bg="#fdf6e3") 
-library(plotrix)
-barpos<-barplot(contagem,main="Gráfico de Barras",col=c("red","blue"))
-barlabels(barpos,contagem,col=c("red","blue"))
+# Customização
+rotulo2=paste(nomes,"\n (",porcentlinha,"%",")",sep="")
+barras2<-barplot(bartable, beside = TRUE, legend = levels(unique(Titanic$Classe)),col=c("black","skyblue","royalblue","darkblue"))  ## plot 
+text(barras2, 2, rotulo2,cex=0.8,pos=4, srt=90,col ="#ffffff")
 
-barpos2<-barplot(contagem2,main="Gráfico de Barras", col=c("#003154","#dd4a37"))
-barlabels(barpos2,contagem2,cex=1.3,prop=0.1, col=c("#003154","#dd4a37"))
-
-```
-
-# Gráficos de Barras "GAP"
-```{r barrasGAP, message=FALSE, warning=FALSE}
-library(RColorBrewer)
-par(bg="#fdf6e3") 
-#display.brewer.all()
-COR<-brewer.pal(4,"Dark2")
-#COR
-
-library(plotrix)
-twogrp<-c(rnorm(10)+4,rnorm(10)+20)
- gap.barplot(twogrp,gap=c(8,16),xlab="Index",ytics=c(3,6,17,20),
-  ylab="Group values",main="Gráfico de Barras com um'GAP'")
-gap.barplot(twogrp,gap=c(8,16),xlab="Index",ytics=c(3,6,17,20),
-  ylab="Valores",horiz=TRUE,main="Gráfico de Barras com um'GAP'")
+barras3<-barplot(bartable, legend = levels(unique(Titanic$Classe)),col=c("black","skyblue","royalblue","darkblue"))
 
 ```
+
 
 # Barras no ggplot2
 
 ```{r barrasggplot}
 library(ggplot2)
-ggplot(data=mtcars, aes(x=am)) +
-  geom_bar(stat="count", fill="steelblue")+
-  theme_minimal()
+library(reshape2)
 
-#install.packages('RCurl')
-library(RCurl)
-x <- getURL("https://raw.githubusercontent.com/DATAUNIRIO/Base_de_dados/master/Estados.csv")
-BaseUF <- read.csv(text=x, header=T, quote="", sep=";",dec = ",")
-ggplot(data=BaseUF, aes(x=Regiao_Geografica)) +
-  geom_bar(stat="count", fill=c("#10c6d3","#0ea5af","#0b8b93","#096c72","#064144"))+
-  theme_minimal()
+x <- c(5,17,31,9,17,10,30,28,16,29,14,34)
+y <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+day <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+
+df1 <- data.frame(x, y, day)
+df2 <- melt(df1, id.vars='day')
+
+ggplot(df2, aes(x=day, y=value, fill=variable)) +
+    geom_bar(stat='identity', position='dodge')
 ```
 
-# Rótulos das Barras no ggplot2
+# Barras "lado a lado" no ggplot2
 
 ```{r barrasggplot2, message=FALSE, warning=FALSE}
-
-dados = data.frame(round(prop.table(contagem)*100,2))
-dados <- within(dados, {
-  Var1 <- factor(Var1, labels=c('Automático','Manual'))
-})
-attach(dados)
-dados <- dados[order(Freq),] 
-detach(dados)
-
-
-# Fora das Barras
-ggplot(data=dados, aes(x=Var1, y=Freq)) +
-  geom_bar(stat="identity", fill="steelblue")+
-  geom_text(aes(label=Freq), vjust=-0.3, size=3.5)+
-   ylab("Frequência") +
-   xlab("Tipo") +
-   theme_minimal()
-# Dentro das Barras
-ggplot(data=dados, aes(x=Var1, y=Freq)) +
-  geom_bar(stat="identity", fill="#275b70")+
-  geom_text(aes(label=Freq), vjust=1.6, color="white",size=3.5)+
-  ylab("Frequência") +
-  xlab("Tipo") +
-  theme_minimal()
-
-ggplot(data=BaseUF, aes(x=Regiao_Geografica)) +
-  geom_bar(stat="count", fill=c("#10c6d3","#0ea5af","#0b8b93","#096c72","#064144"))+
-  geom_text(stat='count',aes(label=..count..),vjust=1.6, color="white",size=3.5)+
-  ylab("Frequência") +
-  xlab("Região Geográfica") +
-  theme_minimal()
-
-
-ggplot(data=BaseUF, aes(x=Regiao_Geografica)) +
-  geom_bar(stat="count", fill=c("#10c6d3","#0ea5af","#0b8b93","#096c72","#064144"))+
-  geom_text(stat="count",aes(label=..count..),vjust=1.6, color="white",size=3.5)+
-  ylab("Frequência") +
-  xlab("Região Geográfica") +
-  theme_minimal()
-
-ggplot(data=BaseUF, aes(x=Regiao_Geografica)) +
-  geom_bar(stat="count", fill=c("#10c6d3","#0ea5af","#0b8b93","#096c72","#064144"))+
-geom_text(aes(label = round(prop.table(..count..)*100,2), y= ..count.. ), stat= "count", vjust=1.6, color="white",size=5.5) +
-  labs(y = "Percentual", fill="Regiao_Geografica")
+library("ggplot2")
+library("reshape")
+  x <- c(5,17,31,9,17,10,30,28,16,29,14,34)
+  y <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+  day <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+  df1 <- data.frame(x,y,day)
+  df2 <- reshape::melt(df1, id = c("day"))
+  ggplot(data = df2, aes(x = day, y = value, fill = variable)) +
+    geom_bar(stat = "identity")+ facet_wrap(~ variable) +
+    scale_x_continuous(breaks=seq(1,12,2))
   
+  ggplot(data = df2, aes(x = day, y = value, fill = day)) + geom_bar(stat = "identity") + facet_wrap(~ variable) + scale_x_continuous(breaks=seq(1,12,2))
 ```
 
+
+```{r barrasggplot3, message=FALSE, warning=FALSE}
+library(dplyr)
+avg_mpg <- mtcars %>%
+        group_by(cyl, am) %>%
+        summarise(mpg = mean(mpg, na.rm = TRUE))
+
+p1 <- ggplot(avg_mpg, aes(factor(cyl), mpg, fill = factor(am))) +
+        geom_bar(stat = "identity", position = "dodge") +
+        ggtitle("Default color comparison")
+
+# more pleasing colors
+p2 <- ggplot(avg_mpg, aes(factor(cyl), mpg, fill = factor(am))) +
+        geom_bar(stat = "identity", position = "dodge", color = "grey40") +
+        scale_fill_brewer(palette = "Pastel1") +
+        ggtitle("Adjusted color comparison")
+grid.arrange(p1, p2, ncol = 2)
+p3 <- ggplot(avg_mpg, aes(factor(cyl), mpg, fill = factor(am))) +
+        geom_bar(stat = "identity")
+```
+  
+  
+```{r barrasggplot4, message=FALSE, warning=FALSE}
+p1 <- ggplot(mtcars, aes(reorder(row.names(mtcars), mpg), mpg)) +
+        geom_bar(stat = "identity") +
+        coord_flip() +
+        geom_text(aes(label = mpg), nudge_y = 2)
+
+p2 <- ggplot(mtcars, aes(reorder(row.names(mtcars), mpg), mpg)) +
+        geom_bar(stat = "identity") +
+        coord_flip() +
+        geom_text(aes(label = mpg), nudge_y = -2, color = "white")
+
+grid.arrange(p1, p2, ncol = 2)
+```
+
+
+```{r barrasggplot5, message=FALSE, warning=FALSE}
+p1 <- ggplot(avg_mpg, aes(factor(cyl), mpg, fill = factor(am))) +
+        geom_bar(stat = "identity", position = "dodge") +
+        geom_text(aes(label = round(mpg, 1)), position = position_dodge(0.9)) +
+        ggtitle("Fig A: Default text alignment")
+
+p2 <- ggplot(avg_mpg, aes(factor(cyl), mpg, fill = factor(am))) +
+        geom_bar(stat = "identity", position = "dodge") +
+        geom_text(aes(label = round(mpg, 1)), position = position_dodge(0.9),
+                  vjust = 1.5, color = "white") +
+        ggtitle("Fig B: Adjusted text alignment")
+
+grid.arrange(p1, p2, ncol = 2)
+```
+
+```{r barrasggplot6, message=FALSE, warning=FALSE}
+# compare mpg across all cars and color based on cyl
+p1 <- ggplot(mtcars, aes(x = reorder(row.names(mtcars), mpg), y = mpg, fill = factor(cyl))) +
+        geom_bar(stat = "identity") +
+        coord_flip() +
+        theme_minimal() +
+        ggtitle("Fig. A: Default fill colors")
+
+p2 <- ggplot(mtcars, aes(x = reorder(row.names(mtcars), mpg), y = mpg, fill = factor(cyl))) +
+        scale_fill_manual(values = c("#e5f5e0", "#a1d99b", "#31a354")) +
+        geom_bar(stat = "identity") +
+        coord_flip() +
+        theme_minimal() +
+        ggtitle("Fig. B: Manually set fill colors")
+
+grid.arrange(p1, p2, ncol = 2)
+```
+
+
+# create label location for each proportional bar
+```{r barrasggplot7, message=FALSE, warning=FALSE}
+# create label location for each proportional bar
+
+proportion <- mtcars %>%
+        group_by(cyl, am) %>%
+        tally() %>%
+        group_by(cyl) %>%
+        mutate(pct = n / sum(n))
+
+proportion <- proportion %>%
+        group_by(cyl) %>%
+        mutate(label_y = cumsum(pct))
+
+p1 <- ggplot(proportion, aes(factor(cyl), pct, fill = factor(am, levels = c(1, 0)))) +
+        geom_bar(stat = "identity", color = "grey40") +
+        geom_text(aes(label = round(pct, 2), y = label_y), vjust = 1.5, color = "white") +
+        scale_fill_manual(values = c("#a1d99b", "#31a354")) +
+        labs(fill = "AM")
+
+p2 <- ggplot(proportion, aes(factor(cyl), pct, fill = factor(am, levels = c(1, 0)))) +
+        geom_bar(stat = "identity", position = "dodge", color = "grey40") +
+        scale_fill_manual(values = c("#a1d99b", "#31a354")) +
+        geom_text(aes(label = round(pct, 2), y = label_y), position = position_dodge(0.9),
+                 vjust = 1.5, color = "white", family = "Georgia")
+grid.arrange(p1, p2, ncol = 2)
+```        
+
+```{r barrasggplot8, message=FALSE, warning=FALSE}
+p1+ labs(title = "Distribution of Adults by Income in Dayton, OH",
+             subtitle = "The percentage of adults in the middle class eroded by 5.3% from 2000 to 2014. Although a small \nfraction of these individuals moved into the upper class (+0.5%), the majority of these middle class \nindividuals moved into the lower income class (+4.8%).",
+             caption = "Source: Pew Research Center analysis of the \n2000 decennial census and 2014 American \nCommunity Survey (IPUMS)")
+
+```        
 # Alternativas ao Gráfico de Barras
 
 ## MOSAICO
 
 Descrição. 
 
-```{r dotplot, message=FALSE, warning=FALSE}
+```{r mosaicplot, message=FALSE, warning=FALSE}
 
+# Gráfico de Mosaico ou Mosaicplot
+library(RColorBrewer)
+par(bg="#fdf6e3") 
+#display.brewer.all()
+COR<-brewer.pal(4,"Dark2")
+#COR
+
+# Gráfico de Mosaico ou Mosaicplot
+mosaico<-mosaicplot(bartable,col=COR)
 ```
 
-## Gráfico com Barras preenchidas com símbolos
-
-Descrição. 
-
-```{r symbolbarplot, message=FALSE, warning=FALSE}
-
-```
 
 Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
