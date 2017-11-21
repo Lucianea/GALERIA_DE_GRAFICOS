@@ -222,4 +222,43 @@ mosaico<-mosaicplot(bartable,col=COR)
 ```
 
 
+# Balloon plot
+
+Balloon plot is an alternative to bar plot for visualizing a large categorical data. We’ll use the function ggballoonplot() [in ggpubr], which draws a graphical matrix of a contingency table, where each cell contains a dot whose size reflects the relative magnitude of the corresponding component. 
+
+```{r Balloonplot, message=FALSE, warning=FALSE}
+par(bg="#fdf6e3") 
+library(ggplot2)
+library(ggpubr)
+theme_set(theme_pubr())
+
+data("mtcars")
+ggballoonplot(mtcars, fill = "value")
+COR <- c("#0D0887FF", "#6A00A8FF", "#B12A90FF","#E16462FF", "#FCA636FF", "#F0F921FF")
+ggballoonplot(mtcars, fill = "value")+
+  scale_fill_gradientn(colors = COR)
+
+library(RCurl)
+x <- getURL("https://raw.githubusercontent.com/DATAUNIRIO/Base_de_dados/master/Estados.csv")
+BaseUF <- read.csv(text=x, header=T, quote="", sep=";",dec = ",")
+row.names(BaseUF)<-BaseUF$Estado
+BaseUF<-BaseUF[,c(7:15)]
+ggballoonplot(BaseUF, fill = "value")
+```
+
+
+Correspondence analysis
+
+Correspondence analysis can be used to summarize and visualize the information contained in a large contingency table formed by two categorical variables.
+
+Required package: FactoMineR for the analysis and factoextra for the visualization
+
+```{r CA, message=FALSE, warning=FALSE}
+library(FactoMineR)
+library(factoextra)
+res.ca <- CA(mtcars, graph = FALSE)
+fviz_ca_biplot(res.ca, repel = TRUE)
+```
+
+
 Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.

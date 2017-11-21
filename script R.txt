@@ -1,3 +1,6 @@
+https://github.com/DATAUNIRIO/ggpubr
+http://www.sthda.com/english/articles/32-r-graphics-essentials/129-visualizing-multivariate-categorical-data/
+
 ## Bubble plot
 data(mtcars)
 names(mtcars)
@@ -13,6 +16,31 @@ pairs(mtcars[,3:6], col = mtcars$am)
 par(mfrow = c(1, 1))
 plot(mtcars$disp, mtcars$hp, col = mtcars$am)
 legend("topright", levels(mtcars$am), fill = mtcars$am)
+
+
+sequences <- read.table(text = '
+A-aa-aaa-end
+                        A-aa-aaa-end
+                        A-aa-vvv-end
+                        A-aa-vvv-end
+                        A-cc-vvv-end
+                        A-cc-vvv-end
+                        B-aa-vvv-end
+                        B-aa-vvv-end
+                        B-bb-rr-end
+                        B-bb-rr-end
+                        C-aa-rr-end
+                        C-aa-rr-end
+                        C-bb-rr-end
+                        C-bb-rr-end
+                        C-cc-rr-end
+                        ')
+
+sequences$V2 <- seq_along(sequences$V1)
+sequences
+
+library(sunburstR)
+sunburst(sequences)
 
 <!-- existem diversas comparar o boxplot com uma visualizacao do ggplot jitter -->
 <!--
