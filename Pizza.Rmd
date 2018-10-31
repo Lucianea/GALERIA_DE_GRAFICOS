@@ -1,4 +1,26 @@
-# Gráfico de Pizza {#Pizza}
+---
+title: "Gráfico de Pizza"
+author: "DATAUNIRIO"
+output: 
+   html_document:
+     theme: flatly
+     highlight: tango
+---
+<head>
+<style>
+body {
+    background-color:#fdf6e3;
+}
+</style>
+</head>
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(RcmdrMisc)
+```
+
+Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
 
 Definição: O gráfico de pizza (de setores) é um diagrama circular onde os valores de cada categoria representada são proporcionais às frequências (fatia da pizza).
 
@@ -9,6 +31,7 @@ Uma variável é chamada qualitativa, também conhecida como categórica, se seu
 Os tutoriais desta seção são baseados em um banco de dados interno do R chamado mtcars. Consiste em uma coleção de informações sobre 32 carros. 
 
 ```{r pizza, message=FALSE, warning=FALSE}
+## Este script cria um "grafico de pizza" semelhante ao produzido pelo DATAUNIRIO
 data(mtcars)
 mtcars <- within(mtcars, {
   am <- factor(am, labels=c('Automático','Manual'))
@@ -32,7 +55,7 @@ rotulo2=paste(nomes2," (",porcent2,"%",")",sep="")
 pie(table(mtcars$vs),labels=rotulo2, main="Tipo", col=c("#003154","#dd4a37"))
 ```
 
-## Pizza 3D
+# Pizza 3D
 ```{r pizza3D, message=FALSE, warning=FALSE}
 library(RColorBrewer)
 par(bg="#fdf6e3") 
@@ -53,7 +76,7 @@ pie3D(table(mtcars$am),labels=rotulo,radius=0.9,explode=0.2, main="Pizza 3D do T
 pie3D(table(mtcars$vs),labels=rotulo2, main="Pizza 3D do Tipo", col=c("#003154","#dd4a37"))
 ```
 
-## Pizza no ggplot2
+# Pizza no ggplot2
 
 ```{r pizzaggplot}
 
@@ -64,7 +87,7 @@ pizza<-ggplot(mtcars, aes(x=factor(1), fill=am))+
 pizza+ theme(plot.background = element_rect(fill = "#e2ded3", colour = "#e2ded3"))
 ```
 
-## Modificação da pizza no ggplot2
+# Modificação da pizza no ggplot2
 
 ```{r pizzaggplot2, message=FALSE, warning=FALSE}
 dados = data.frame(round(contagem/sum(contagem)*100,2))
@@ -102,7 +125,7 @@ pizza+ scale_fill_brewer(palette="Dark2") +  theme_economist() +
   
 ```
 
-## Alternativas ao Gráfico de Pizza
+# Alternativas ao Gráfico de Pizza
 
 ## Gráfico de *Doughnut*
 #### (*Doughnutplot, Ring plot, Donut plot.*)
@@ -195,7 +218,6 @@ ggplot(data = dat1) +
 library(RColorBrewer)
 #display.brewer.all()
 COR6<-brewer.pal(6,"YlGnBu")
-#devtools::install_github("jcheng5/bubbles")
 library(bubbles)
 bubbles(value = iucn.df$threatened,
         color = COR6,
@@ -231,9 +253,6 @@ ggplot(data = dat, aes(x, y)) +
   )
 ```
 
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```
+
+
+Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
