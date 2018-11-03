@@ -1,26 +1,9 @@
----
-title: "Histograma"
-author: "DATAUNIRIO"
-output: 
-   html_document:
-     theme: flatly
-     highlight: tango
----
-<head>
-<style>
-body {
-    background-color:#fdf6e3;
-}
-</style>
-</head>
-
-
+#Histograma {#Histograma}
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 require(RcmdrMisc)
 ```
 
-Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
 
 Definição: uma  uma representação gráfica em formato de retângulos cuja área é proporcional à frequência de uma variável quantitativa e cuja largura é igual ao intervalo de classe.
 
@@ -33,7 +16,7 @@ hist(mtcars$mpg,col="steelblue")
 
 ```
 
-# Histograma
+## Histograma
 ```{r Histograma2, message=FALSE, warning=FALSE}
 library(RColorBrewer)
 par(bg="#fdf6e3") 
@@ -47,7 +30,7 @@ Hist(mtcars$mpg,col=COR, scale="percent",main="Histograma do MPG",xlab = "Milhas
 
 ```
 
-# Histograma no ggplot2
+## Histograma no ggplot2
 
 ```{r histogramaggplot, message=FALSE, warning=FALSE}
 par(bg="#fdf6e3") 
@@ -59,7 +42,7 @@ ggplot(mtcars, aes(mpg)) +
   geom_histogram(color="#45ad8a", fill="#417f6a")
 ```
 
-# Modificação do Histograma no ggplot2
+## Modificação do Histograma no ggplot2
 
 ```{r histogramaggplot2, message=FALSE, warning=FALSE}
 par(bg="#fdf6e3") 
@@ -74,7 +57,7 @@ ggplot(mtcars, aes(y =..density..,mpg, fill = factor(am)))+
 
 ```
 
-# Histograma Avançado no ggplot2
+## Histograma Avançado no ggplot2
 
 ```{r histogramaggplot3, message=FALSE, warning=FALSE}
 par(bg="#fdf6e3") 
@@ -103,7 +86,7 @@ ggplot(df, aes(x=weight, fill =sex, color=sex)) +
 ```
 
 
-# Alternativas ao Histograma
+## Alternativas ao Histograma
 
 ## Histograma por grupos 'Stack'
 
@@ -118,7 +101,7 @@ df<-data.frame(len=rnorm(100)+5,
 ```
 
 
-# Back to back histogramas
+## Back to back histogramas
 
 ```{r Backtobackhistogram, message=FALSE, warning=FALSE}
 #Back to back histograms
@@ -132,7 +115,3 @@ var2 <- sample(c('A','B'),1000,TRUE)
 ```
 
 
-
- 
-
-Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.

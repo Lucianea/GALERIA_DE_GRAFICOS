@@ -1,40 +1,23 @@
----
-title: "Box-Plot"
-author: "DATAUNIRIO"
-output: 
-   html_document:
-     theme: flatly
-     highlight: tango
----
-<head>
-<style>
-body {
-    background-color:#fdf6e3;
-}
-</style>
-</head>
-
+#Boxplot {#Boxplot}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 require(RcmdrMisc)
 ```
 
-Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
-
 Definição: uma  uma representação gráfica em formato de retângulos cuja área é proporcional à frequência de uma variável quantitativa e cuja largura é igual ao intervalo de classe.
 
 Para que serve: Um histograma é uma representação gráfica da distribuição de uma variável quantitativa contínua. Com o histograma pode-se visualizar a dispersão/concentração dos dados, bem como a assimetria/simetria dos dados. É muito utilizado para visualizar toda a distribuição de uma variável quantitativa. Foi introduzida pela primeira vez por Karl Pearson (OBS - É muito parecido com o gráfico de barras).
 
-```{r boxplot, message=FALSE, warning=FALSE}
+```{r boxplot, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 par(bg="#fdf6e3") 
 data(mtcars)
 
 
 ```
 
-# boxplot
-```{r boxplot2, message=FALSE, warning=FALSE}
+
+```{r boxplot2, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 library(RColorBrewer)
 par(bg="#fdf6e3") 
 #display.brewer.all()
@@ -44,15 +27,15 @@ COR<-brewer.pal(5,"Blues")
 
 ```
 
-# Boxplot no ggplot2
+## Boxplot no ggplot2
 
-```{r histogramaggplot, message=FALSE, warning=FALSE}
+```{r histogramaggplot, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 par(bg="#fdf6e3") 
 library(ggplot2)
 
 ```
 
-# Modificação do boxplot no ggplot2
+
 
 ```{r histogramaggplot2, message=FALSE, warning=FALSE}
 par(bg="#fdf6e3") 
@@ -60,7 +43,7 @@ library(ggplot2)
 
 ```
 
-# aaa
+## Boxplot no ggplot2
 
 ```{r histogramaggplot3, message=FALSE, warning=FALSE}
 par(bg="#fdf6e3") 
@@ -74,7 +57,7 @@ plot2 + geom_boxplot()+theme_bw( )
 ```
 
 
-# Alternativas ao Boxplot
+## Alternativas ao Boxplot
 
 ## Trellis plot in Box-Percentile Panel Decile plot
 
@@ -105,7 +88,7 @@ bwplot(g ~ x, panel=panel.bpplot, probs=c(.1,.2,.3,.4), qref=c(.5,.2,.8))
 ```
 
 
-# Back 
+## Back 
 ```{r , message=FALSE, warning=FALSE}
 #Box-percentile plots
 normal <- rnorm(10000, 7.5,3)
@@ -137,7 +120,7 @@ beanplot(bimodal, uniform, normal, ylim = ylim, main = "beanplot",col = c("cyan3
 ```
 
 
-# Notched boxplot
+## Notched boxplot
 ```{r , message=FALSE, warning=FALSE}
 # data 
 x <- c(rnorm(1000, 50, 20), rnorm(500, 70, 10), rnorm(500, 30, 10), runif(1000, 0, 100))
@@ -158,8 +141,3 @@ hist(data,xlim=c(-4,4), col = "pink")
 boxplot(data, horizontal=TRUE,  outline=TRUE,ylim=c(-4,4), frame=F, col = "green1", width = 10)
 ```
 
-
-
- 
-
-Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.

@@ -1,29 +1,13 @@
----
-title: "Mapas"
-author: "DATAUNIRIO"
-output: 
-   html_document:
-     theme: flatly
-     highlight: tango
----
-<head>
-<style>
-body {
-    background-color:#fdf6e3;
-}
-</style>
-</head>
-
-
+#Mapa {#Mapa}
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Hexabin XY scatter plot and transparent point XY plot R Markdown
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 # data
- library(OpenStreetMap)
+library(OpenStreetMap)
 library(rgdal)
 
 # get world map
@@ -70,8 +54,8 @@ var.2013 = var.2011*0.98 + rnorm (length (country), 0, 30)
 worldt <- data.frame (country, var.2010, var.2011, var.2012, var.2013)
 
 
-
-mapplot(country ~ var.2011, worldt, map = map("world",     plot = FALSE, fill = TRUE))
-mapplot(country ~ var.2010 + var.2011 + var.2012 + var.2013, data = worldt, map = map("world",     plot = FALSE, fill = TRUE))
+library(oce)
+mapPlot(country ~ var.2011, worldt, map = map("world",     plot = FALSE, fill = TRUE))
+mapPlot(country ~ var.2010 + var.2011 + var.2012 + var.2013, data = worldt, map = map("world",     plot = FALSE, fill = TRUE))
 ```
 

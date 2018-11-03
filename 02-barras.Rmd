@@ -1,4 +1,4 @@
-# Gráfico de Barras {#barras}
+# Gráfico de Barras {#Barras}
 
 Para que serve: O gráfico de barras é uma maneira de resumir a informação de uma variável qualitativa/categórica. 
 
@@ -62,7 +62,7 @@ gap.barplot(twogrp,gap=c(8,16),xlab="Index",ytics=c(3,6,17,20),
 
 ## Barras no ggplot2
 
-```{r barrasggplot}
+```{r barrasggplot, eval=FALSE}
 library(ggplot2)
 ggplot(data=mtcars, aes(x=am)) +
   geom_bar(stat="count", fill="steelblue")+
@@ -78,9 +78,9 @@ ggplot(data=BaseUF, aes(x=Regiao_Geografica)) +
   theme_minimal()
 ```
 
-# Rótulos das Barras no ggplot2
+## Rótulos das Barras no ggplot2
 
-```{r barrasggplot2, message=FALSE, warning=FALSE}
+```{r barrasggplot2, message=FALSE, warning=FALSE, eval=FALSE}
 
 dados = data.frame(round(prop.table(contagem)*100,2))
 dados <- within(dados, {
@@ -156,7 +156,7 @@ dotplot.mtb(x,yaxis=TRUE,main="Dotplot")
 
 Descrição. Produz um gráfico de barras onde cada unidade de 'barra' é preenchida com o número de símbolos igual ao tamanho da barra.
 
-```{r symbolbarplot, message=FALSE, warning=FALSE}
+```{r symbolbarplot,eval=FALSE, message=FALSE, warning=FALSE}
 set.seed(1001)
 bvals <- matrix(rpois(12,20),nrow=3)
 b <- symbolbarplot(bvals)
@@ -205,7 +205,7 @@ ruler.bar.plot(VV, LV, mjtick =0.1, mntick = 0.02,  mjtickcol = "black", mntickc
 
 ##Gráfico de Barras Circular
 
-```{r barplots2, message=FALSE, warning=FALSE}
+```{r barplots2, message=FALSE, warning=FALSE, eval=FALSE}
 #circular bar plot 
 library(ggplot2)
 #DATA

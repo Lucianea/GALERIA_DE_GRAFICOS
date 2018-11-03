@@ -1,5 +1,12 @@
-book_filename: "bookdown-demo"
+book_filename: "Galeria-de-Gráficos"
 language:
+  label:
+    fig: 'Figura '
+    tab: 'Tabela '
+    eq: 'Equação '
+    thm: 'Teorema '
+    def: 'Definição '
+    ex: 'Exemplo '
   ui:
     chapter_name: "CAPÍTULO "
 delete_merged_file: true

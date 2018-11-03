@@ -1,26 +1,10 @@
----
-title: "Gráfico de Densidade"
-author: "DATAUNIRIO"
-output: 
-   html_document:
-     theme: flatly
-     highlight: tango
----
-<head>
-<style>
-body {
-    background-color:#fdf6e3;
-}
-</style>
-</head>
-
+#Gráfico de Densidade {#Densidade}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 require(RcmdrMisc)
 ```
 
-Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
 
 Definição: 
 
@@ -29,21 +13,21 @@ Para que serve:
 ```{r densidade, message=FALSE, warning=FALSE}
 par(bg="#fdf6e3") 
 data(mtcars)
-densityPlot( ~ mpg, data=mtcars, bw="SJ", adjust=1, kernel="gaussian",col="steelblue")
+densityPlot( ~ mpg, data=mtcars, adjust=1, kernel=gaussian,col="steelblue")
 ```
 
-# Densidade
+## Densidade
 ```{r Histograma2, message=FALSE, warning=FALSE}
 mtcars <- within(mtcars, {
   am <- as.factor(am)
   vs <- as.factor(vs)
 })
 par(bg="#fdf6e3") 
-densityPlot(mpg~am, data=mtcars, bw="SJ", adjust=1, kernel="gaussian",col=c("steelblue","red"))
+densityPlot(mpg~am, data=mtcars,  adjust=1, kernel=gaussian,col=c("steelblue","red"))
 
 ```
 
-# Gráfico de densidade no ggplot2
+## Gráfico de densidade no ggplot2
 
 ```{r densidadeggplot, message=FALSE, warning=FALSE}
 par(bg="#fdf6e3") 
@@ -55,7 +39,7 @@ ggplot(mtcars, aes(mpg)) +
   geom_density(color="#45ad8a", fill="#417f6a")
 ```
 
-# Modificação do gráfico no ggplot2
+## Modificação do gráfico no ggplot2
 
 ```{r densidadeggplot2, message=FALSE, warning=FALSE}
 par(bg="#fdf6e3") 
@@ -84,6 +68,3 @@ ggplot(df, aes(x=weight, fill =sex, color=sex)) +
 
 ```
 
-
-
-Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.

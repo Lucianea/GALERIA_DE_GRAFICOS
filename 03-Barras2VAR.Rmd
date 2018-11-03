@@ -1,20 +1,4 @@
----
-title: "Gráfico de Barras com duas variáveis"
-author: "DATAUNIRIO"
-output: 
-   html_document:
-     theme: flatly
-     highlight: tango
----
-<head>
-<style>
-body {
-    background-color:#fdf6e3;
-}
-</style>
-</head>
-
-
+#Barras com duas variáveis {#Barras2}
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
@@ -25,8 +9,6 @@ library(gridExtra)
 
 #load("C:/Users/Hp/Documents/GitHub/Base_de_dados/Titanic.RData")
 ```
-
-Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
 
 Para que serve: O gráfico de barras é uma maneira de resumir a informação de duas ou mais variáveis qualitativas. 
 
@@ -63,7 +45,7 @@ barras3<-barplot(bartable, legend = levels(unique(Titanic$Classe)),col=c("black"
 ```
 
 
-# Barras no ggplot2
+## Barras no ggplot2
 
 ```{r barrasggplot}
 library(ggplot2)
@@ -80,7 +62,7 @@ ggplot(df2, aes(x=day, y=value, fill=variable)) +
     geom_bar(stat='identity', position='dodge')
 ```
 
-# Barras "lado a lado" no ggplot2
+## Barras "lado a lado" no ggplot2
 
 ```{r barrasggplot2, message=FALSE, warning=FALSE}
 library("ggplot2")
@@ -168,7 +150,7 @@ grid.arrange(p1, p2, ncol = 2)
 ```
 
 
-# create label location for each proportional bar
+## create label location for each proportional bar
 ```{r barrasggplot7, message=FALSE, warning=FALSE}
 # create label location for each proportional bar
 
@@ -202,11 +184,11 @@ p1+ labs(title = "Distribution of Adults by Income in Dayton, OH",
              caption = "Source: Pew Research Center analysis of the \n2000 decennial census and 2014 American \nCommunity Survey (IPUMS)")
 
 ```        
-# Alternativas ao Gráfico de Barras
+## Alternativas ao Gráfico de Barras
 
 ## MOSAICO
 
-Descrição. 
+Descrição.  Conjunto de retângulo, cada um representa o cruzamento de dois níveis de duas variáveis e o tamanho de cada retângulo é proporcional ao percentual de observações dessa combinação de níveis de variáveis.
 
 ```{r mosaicplot, message=FALSE, warning=FALSE}
 
@@ -222,7 +204,7 @@ mosaico<-mosaicplot(bartable,col=COR)
 ```
 
 
-# Balloon plot
+## Balloon plot
 
 Balloon plot is an alternative to bar plot for visualizing a large categorical data. We’ll use the function ggballoonplot() [in ggpubr], which draws a graphical matrix of a contingency table, where each cell contains a dot whose size reflects the relative magnitude of the corresponding component. 
 
@@ -256,9 +238,7 @@ Required package: FactoMineR for the analysis and factoextra for the visualizati
 ```{r CA, message=FALSE, warning=FALSE}
 library(FactoMineR)
 library(factoextra)
-res.ca <- CA(mtcars, graph = FALSE)
+dt=mtcars[,c(1:7,10)]
+res.ca <- CA(dt, graph = FALSE)
 fviz_ca_biplot(res.ca, repel = TRUE)
 ```
-
-
-Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.

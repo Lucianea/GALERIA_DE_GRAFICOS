@@ -1,19 +1,4 @@
----
-title: "Hexabin scatter plot"
-author: "DATAUNIRIO"
-output: 
-   html_document:
-     theme: flatly
-     highlight: tango
----
-<head>
-<style>
-body {
-    background-color:#fdf6e3;
-}
-</style>
-</head>
-
+#Hexabin scatter plot {#Hexabin}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
