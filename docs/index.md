@@ -21,7 +21,7 @@ description: "Este é um projeto de livro aberto sobre elaboração de gráficos
 
 # Preface {-}
 
-<a href="https://lamenteesmaravillosa.com/wp-content/uploads/2016/05/ilusion-optica-1.jpg" target="_blank"><img src="cover.jpg" style="display: block; margin: auto;" /></a>
+<a href="https://lamenteesmaravillosa.com/wp-content/uploads/2016/05/ilusion-optica-1.jpg" target="_blank"><img src="cover.png" style="display: block; margin: auto;" /></a>
 
 Aqui colocaremos um prefácio 
 

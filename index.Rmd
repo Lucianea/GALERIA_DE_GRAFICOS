@@ -36,7 +36,7 @@ lapply(c('DT', 'citr', 'formatR', 'svglite'), function(pkg) {
 # Preface {-}
 
 ```{r fig.align='center', echo=FALSE, include=identical(knitr:::pandoc_to(), 'html'), fig.link='https://lamenteesmaravillosa.com/wp-content/uploads/2016/05/ilusion-optica-1.jpg'}
-knitr::include_graphics('cover.jpg', dpi = NA)
+knitr::include_graphics('cover.png', dpi = NA)
 ```
 
 Aqui colocaremos um prefácio 

@@ -233,8 +233,8 @@ bubbles(value = iucn.df$threatened,
         width=800, height=800)  
 ```
 
-<!--html_preserve--><div id="htmlwidget-e97c21b876f5771bd9e0" style="width:800px;height:800px;" class="bubbles html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e97c21b876f5771bd9e0">{"x":{"value":[5994,7737,1987,4716,5097,2093],"label":["África","Ásia","Europa","América do Norte","América do Sul","Oceania"],"tooltip":["","","","","",""],"color":["#FFFFCC","#C7E9B4","#7FCDBB","#41B6C4","#2C7FB8","#253494"],"textColor":["#333333","#333333","#333333","#333333","#333333","#333333"]},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-801effd56a3f72f0d5c3" style="width:800px;height:800px;" class="bubbles html-widget"></div>
+<script type="application/json" data-for="htmlwidget-801effd56a3f72f0d5c3">{"x":{"value":[5994,7737,1987,4716,5097,2093],"label":["África","Ásia","Europa","América do Norte","América do Sul","Oceania"],"tooltip":["","","","","",""],"color":["#FFFFCC","#C7E9B4","#7FCDBB","#41B6C4","#2C7FB8","#253494"],"textColor":["#333333","#333333","#333333","#333333","#333333","#333333"]},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```r
 #########################################################################################
