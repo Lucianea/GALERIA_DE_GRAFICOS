@@ -62,7 +62,7 @@ gap.barplot(twogrp,gap=c(8,16),xlab="Index",ytics=c(3,6,17,20),
 
 ## Barras no ggplot2
 
-```{r barrasggplot, eval=FALSE}
+```{r barrasggplot}
 library(ggplot2)
 ggplot(data=mtcars, aes(x=am)) +
   geom_bar(stat="count", fill="steelblue")+
@@ -80,7 +80,7 @@ ggplot(data=BaseUF, aes(x=Regiao_Geografica)) +
 
 ## Rótulos das Barras no ggplot2
 
-```{r barrasggplot2, message=FALSE, warning=FALSE, eval=FALSE}
+```{r barrasggplot2, message=FALSE, warning=FALSE, }
 
 dados = data.frame(round(prop.table(contagem)*100,2))
 dados <- within(dados, {
@@ -97,6 +97,7 @@ ggplot(data=dados, aes(x=Var1, y=Freq)) +
    ylab("Frequência") +
    xlab("Tipo") +
    theme_minimal()
+
 # Dentro das Barras
 ggplot(data=dados, aes(x=Var1, y=Freq)) +
   geom_bar(stat="identity", fill="#275b70")+
@@ -156,7 +157,7 @@ dotplot.mtb(x,yaxis=TRUE,main="Dotplot")
 
 Descrição. Produz um gráfico de barras onde cada unidade de 'barra' é preenchida com o número de símbolos igual ao tamanho da barra.
 
-```{r symbolbarplot,eval=FALSE, message=FALSE, warning=FALSE}
+```{r symbolbarplot,message=FALSE, warning=FALSE}
 set.seed(1001)
 bvals <- matrix(rpois(12,20),nrow=3)
 b <- symbolbarplot(bvals)
@@ -205,7 +206,7 @@ ruler.bar.plot(VV, LV, mjtick =0.1, mntick = 0.02,  mjtickcol = "black", mntickc
 
 ##Gráfico de Barras Circular
 
-```{r barplots2, message=FALSE, warning=FALSE, eval=FALSE}
+```{r barplots2, message=FALSE, warning=FALSE}
 #circular bar plot 
 library(ggplot2)
 #DATA
@@ -217,12 +218,17 @@ myd <-data.frame(category,percent)
 #levels to set proper order of bars 
 myd$category <-factor(myd$category,levels=rev(myd$category))
 # plot
-plt <- ggplot(myd, aes(x = category, y = percent,fill = category)) + geom_bar(width = 0.85, stat="identity") +    coord_polar(theta = "y") +    xlab("") + ylab("") +
-    ylim(c(0,100)) + ggtitle("Graph 1") +    geom_text(data = myd, hjust = 1, size = 3, aes(x = category, y = 0, label = category)) 
+plt <- ggplot(myd, aes(x = category, y = percent,fill = category)) +
+  geom_bar(width = 0.85, stat="identity") + 
+  coord_polar(theta = "y") + 
+  xlab("") +
+  ylab("") +
+  ylim(c(0,100)) +
+  ggtitle("Gráfico circular") + 
+  geom_text(data = myd, hjust = 1, size = 3, aes(x = category, y = 0, label = category)) 
 
-plt +  scale_fill_manual(values = c("red1","red4", "green1", "green4", "blue1", "blue4")) + theme_minimal() + theme(legend.position = "none",panel.grid.major = element_blank(),panel.grid.minor = element_blank(),          axis.line = element_blank(),axis.text.y = element_blank(),          axis.text.x = element_blank(), axis.ticks = element_blank())
-```
-
-```{r barplots3, message=FALSE, warning=FALSE}
-
+plt +
+  scale_fill_manual(values = c("red1","red4", "green1", "green4", "blue1", "blue4"))+ 
+  theme_minimal()+
+  theme(legend.position = "none", panel.grid.major = element_blank(), panel.grid.minor = element_blank(),          axis.line = element_blank(), axis.text.y = element_blank(),          axis.text.x = element_blank(), axis.ticks = element_blank())
 ```

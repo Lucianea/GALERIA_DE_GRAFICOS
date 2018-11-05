@@ -1,8 +1,7 @@
-#Gráfico de Densidade {#Densidade}
+#Densidade {#Densidade}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-require(RcmdrMisc)
 ```
 
 
@@ -12,18 +11,20 @@ Para que serve:
 
 ```{r densidade, message=FALSE, warning=FALSE}
 par(bg="#fdf6e3") 
+require(car)
 data(mtcars)
-densityPlot( ~ mpg, data=mtcars, adjust=1, kernel=gaussian,col="steelblue")
+densityPlot( ~ mpg, data=mtcars, adjust=1, method="kernel",col="steelblue")
 ```
 
 ## Densidade
 ```{r Histograma2, message=FALSE, warning=FALSE}
+require(car)
 mtcars <- within(mtcars, {
   am <- as.factor(am)
   vs <- as.factor(vs)
 })
 par(bg="#fdf6e3") 
-densityPlot(mpg~am, data=mtcars,  adjust=1, kernel=gaussian,col=c("steelblue","red"))
+densityPlot(mpg~am, data=mtcars,  adjust=1, method="kernel",col=c("steelblue","red"))
 
 ```
 

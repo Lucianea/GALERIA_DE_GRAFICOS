@@ -1,10 +1,10 @@
-#Barras com duas variáveis {#Barras2}
+#Barras com duas variáveis {#Barras2VAR}
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
 #http://bradleyboehmke.github.io/tutorials/barchart
 
-require(RcmdrMisc)
+#require(RcmdrMisc)
 library(gridExtra)
 
 #load("C:/Users/Hp/Documents/GitHub/Base_de_dados/Titanic.RData")
@@ -13,7 +13,7 @@ library(gridExtra)
 Para que serve: O gráfico de barras é uma maneira de resumir a informação de duas ou mais variáveis qualitativas. 
 
 
-```{r barras, message=FALSE, warning=FALSE}
+```{r barras1, message=FALSE, warning=FALSE}
 par(bg="#fdf6e3")
 load(url("https://raw.githubusercontent.com/DATAUNIRIO/Base_de_dados/master/Titanic.RData"))
 #legenda
@@ -37,17 +37,20 @@ text(barras, 0, rotulo,cex=1,pos=3, col ="#ffffff")
 par(bg="#fdf6e3") 
 # Customização
 rotulo2=paste(nomes,"\n (",porcentlinha,"%",")",sep="")
+
 barras2<-barplot(bartable, beside = TRUE, legend = levels(unique(Titanic$Classe)),col=c("black","skyblue","royalblue","darkblue"))  ## plot 
 text(barras2, 2, rotulo2,cex=0.8,pos=4, srt=90,col ="#ffffff")
 
-barras3<-barplot(bartable, legend = levels(unique(Titanic$Classe)),col=c("black","skyblue","royalblue","darkblue"))
+```
 
+```{r barras3, message=FALSE, warning=FALSE}
+barras3<-barplot(bartable, legend = levels(unique(Titanic$Classe)),col=c("black","skyblue","royalblue","darkblue"))
 ```
 
 
 ## Barras no ggplot2
 
-```{r barrasggplot}
+```{r barras4,  message=FALSE, warning=FALSE}
 library(ggplot2)
 library(reshape2)
 
@@ -64,7 +67,7 @@ ggplot(df2, aes(x=day, y=value, fill=variable)) +
 
 ## Barras "lado a lado" no ggplot2
 
-```{r barrasggplot2, message=FALSE, warning=FALSE}
+```{r barras5, message=FALSE, warning=FALSE}
 library("ggplot2")
 library("reshape")
   x <- c(5,17,31,9,17,10,30,28,16,29,14,34)
@@ -75,12 +78,23 @@ library("reshape")
   ggplot(data = df2, aes(x = day, y = value, fill = variable)) +
     geom_bar(stat = "identity")+ facet_wrap(~ variable) +
     scale_x_continuous(breaks=seq(1,12,2))
-  
-  ggplot(data = df2, aes(x = day, y = value, fill = day)) + geom_bar(stat = "identity") + facet_wrap(~ variable) + scale_x_continuous(breaks=seq(1,12,2))
 ```
 
+```{r barras6, message=FALSE, warning=FALSE}
+library("ggplot2")
+library("reshape")
+  x <- c(5,17,31,9,17,10,30,28,16,29,14,34)
+  y <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+  day <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+  df1 <- data.frame(x,y,day)
+  df2 <- reshape::melt(df1, id = c("day"))
+ ggplot(data = df2, aes(x = day, y = value, fill = day)) +
+   geom_bar(stat = "identity") + 
+   facet_wrap(~ variable) +
+   scale_x_continuous(breaks=seq(1,12,2))
+```
 
-```{r barrasggplot3, message=FALSE, warning=FALSE}
+```{r barras7, message=FALSE, warning=FALSE}
 library(dplyr)
 avg_mpg <- mtcars %>%
         group_by(cyl, am) %>%
@@ -90,18 +104,35 @@ p1 <- ggplot(avg_mpg, aes(factor(cyl), mpg, fill = factor(am))) +
         geom_bar(stat = "identity", position = "dodge") +
         ggtitle("Default color comparison")
 
+```
+
+```{r barras8, message=FALSE, warning=FALSE}
+library(dplyr)
+avg_mpg <- mtcars %>%
+        group_by(cyl, am) %>%
+        summarise(mpg = mean(mpg, na.rm = TRUE))
+
 # more pleasing colors
 p2 <- ggplot(avg_mpg, aes(factor(cyl), mpg, fill = factor(am))) +
         geom_bar(stat = "identity", position = "dodge", color = "grey40") +
         scale_fill_brewer(palette = "Pastel1") +
         ggtitle("Adjusted color comparison")
 grid.arrange(p1, p2, ncol = 2)
+
+```
+
+```{r barras9, message=FALSE, warning=FALSE}
+library(dplyr)
+avg_mpg <- mtcars %>%
+        group_by(cyl, am) %>%
+        summarise(mpg = mean(mpg, na.rm = TRUE))
+
 p3 <- ggplot(avg_mpg, aes(factor(cyl), mpg, fill = factor(am))) +
         geom_bar(stat = "identity")
+p3
 ```
   
-  
-```{r barrasggplot4, message=FALSE, warning=FALSE}
+```{r barras10, message=FALSE, warning=FALSE}
 p1 <- ggplot(mtcars, aes(reorder(row.names(mtcars), mpg), mpg)) +
         geom_bar(stat = "identity") +
         coord_flip() +
@@ -116,7 +147,7 @@ grid.arrange(p1, p2, ncol = 2)
 ```
 
 
-```{r barrasggplot5, message=FALSE, warning=FALSE}
+```{r barras11, message=FALSE, warning=FALSE}
 p1 <- ggplot(avg_mpg, aes(factor(cyl), mpg, fill = factor(am))) +
         geom_bar(stat = "identity", position = "dodge") +
         geom_text(aes(label = round(mpg, 1)), position = position_dodge(0.9)) +
@@ -131,13 +162,14 @@ p2 <- ggplot(avg_mpg, aes(factor(cyl), mpg, fill = factor(am))) +
 grid.arrange(p1, p2, ncol = 2)
 ```
 
-```{r barrasggplot6, message=FALSE, warning=FALSE}
+```{r barras13, message=FALSE, warning=FALSE}
 # compare mpg across all cars and color based on cyl
 p1 <- ggplot(mtcars, aes(x = reorder(row.names(mtcars), mpg), y = mpg, fill = factor(cyl))) +
         geom_bar(stat = "identity") +
         coord_flip() +
         theme_minimal() +
         ggtitle("Fig. A: Default fill colors")
+p1
 
 p2 <- ggplot(mtcars, aes(x = reorder(row.names(mtcars), mpg), y = mpg, fill = factor(cyl))) +
         scale_fill_manual(values = c("#e5f5e0", "#a1d99b", "#31a354")) +
@@ -146,12 +178,13 @@ p2 <- ggplot(mtcars, aes(x = reorder(row.names(mtcars), mpg), y = mpg, fill = fa
         theme_minimal() +
         ggtitle("Fig. B: Manually set fill colors")
 
-grid.arrange(p1, p2, ncol = 2)
+p2
+
 ```
 
 
 ## create label location for each proportional bar
-```{r barrasggplot7, message=FALSE, warning=FALSE}
+```{r barras15, message=FALSE, warning=FALSE}
 # create label location for each proportional bar
 
 proportion <- mtcars %>%
@@ -169,16 +202,17 @@ p1 <- ggplot(proportion, aes(factor(cyl), pct, fill = factor(am, levels = c(1, 0
         geom_text(aes(label = round(pct, 2), y = label_y), vjust = 1.5, color = "white") +
         scale_fill_manual(values = c("#a1d99b", "#31a354")) +
         labs(fill = "AM")
+p1
 
 p2 <- ggplot(proportion, aes(factor(cyl), pct, fill = factor(am, levels = c(1, 0)))) +
         geom_bar(stat = "identity", position = "dodge", color = "grey40") +
         scale_fill_manual(values = c("#a1d99b", "#31a354")) +
         geom_text(aes(label = round(pct, 2), y = label_y), position = position_dodge(0.9),
                  vjust = 1.5, color = "white", family = "Georgia")
-grid.arrange(p1, p2, ncol = 2)
+p2
 ```        
 
-```{r barrasggplot8, message=FALSE, warning=FALSE}
+```{r barras16, message=FALSE, warning=FALSE}
 p1+ labs(title = "Distribution of Adults by Income in Dayton, OH",
              subtitle = "The percentage of adults in the middle class eroded by 5.3% from 2000 to 2014. Although a small \nfraction of these individuals moved into the upper class (+0.5%), the majority of these middle class \nindividuals moved into the lower income class (+4.8%).",
              caption = "Source: Pew Research Center analysis of the \n2000 decennial census and 2014 American \nCommunity Survey (IPUMS)")

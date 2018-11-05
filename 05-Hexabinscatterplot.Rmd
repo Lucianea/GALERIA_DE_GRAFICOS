@@ -1,4 +1,4 @@
-#Hexabin scatter plot {#Hexabin}
+#Hexabinscatterplot {#Hexabinscatterplot}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -17,7 +17,7 @@ ggplot(df,aes(x=x,y=y)) + stat_binhex() + theme_bw()
 # vivid colored 
 ggplot(df,aes(x=x,y=y)) + stat_binhex(colour="white",na.rm=TRUE) + scale_fill_gradientn(colours=c("green1","red"),name = "Frequency",na.value=NA)+ theme_bw()
 # plot with transparency 
-require(ggplot2)
+
 ggplot(df,aes(x=x,y=y)) + geom_point(alpha = 0.3, col = "red") + theme_bw()
 # in base
 # data
@@ -41,8 +41,6 @@ add.alpha <- function(col, alpha=1){
 plot(df$x, df$y, pch = 19, cex = 0.5, col = add.alpha ("red", 0.2))
 
 
-
-require(ggplot2)
 
 set.seed (1234)
 Xv <- c(rnorm (500, 10,3), rnorm (500, 50, 20), rnorm (500, 70, 20))

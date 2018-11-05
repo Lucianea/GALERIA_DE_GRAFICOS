@@ -1,12 +1,7 @@
-book_filename: "Galeria-de-Gráficos"
-language:
-  label:
-    fig: 'Figura '
-    tab: 'Tabela '
-    eq: 'Equação '
-    thm: 'Teorema '
-    def: 'Definição '
-    ex: 'Exemplo '
-  ui:
-    chapter_name: "CAPÍTULO "
-delete_merged_file: true
+book_filename: "Galeria_de_Grafico"
+chapter_name: "Cap "
+repo: https://github.com/Lucianea/Galeria-de-Graficos
+output_dir: docs
+#rmd_files: ["index.Rmd", "01-Pizza.Rmd", "02-Barras.Rmd", "03-Barras2VAR.Rmd", "04-references.Rmd"]
+clean: [packages.bib, bookdown.bbl]
+new_session: yes

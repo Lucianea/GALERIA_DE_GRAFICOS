@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Galeria de Gráficos</title>
+  <meta name="description" content="Este é um projeto de livro aberto sobre elaboração de gráficos com R.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Galeria de Gráficos" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este é um projeto de livro aberto sobre elaboração de gráficos com R." />
+  <meta name="github-repo" content="Lucianea/GALERIA_DE_GRAFICOS" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Galeria de Gráficos" />
+  
+  <meta name="twitter:description" content="Este é um projeto de livro aberto sobre elaboração de gráficos com R." />
+  
+
+<meta name="author" content="Steven Dutt-Ross &amp; Luciane Alcoforado">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="Pizza.html">
+<link rel="next" href="Barras2VAR.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/d3-3.5.3/d3.js"></script>
+<script src="libs/bubbles-binding-0.2/bubbles.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Galeria de Graficos</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#nossa-proposta"><i class="fa fa-check"></i><b>0.1</b> Nossa proposta</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="Pizza.html"><a href="Pizza.html"><i class="fa fa-check"></i><b>1</b> Gráfico de Pizza</a><ul>
+<li class="chapter" data-level="1.1" data-path="Pizza.html"><a href="Pizza.html#pizza-3d"><i class="fa fa-check"></i><b>1.1</b> Pizza 3D</a></li>
+<li class="chapter" data-level="1.2" data-path="Pizza.html"><a href="Pizza.html#pizza-no-ggplot2"><i class="fa fa-check"></i><b>1.2</b> Pizza no ggplot2</a></li>
+<li class="chapter" data-level="1.3" data-path="Pizza.html"><a href="Pizza.html#modificacao-da-pizza-no-ggplot2"><i class="fa fa-check"></i><b>1.3</b> Modificação da pizza no ggplot2</a></li>
+<li class="chapter" data-level="1.4" data-path="Pizza.html"><a href="Pizza.html#alternativas-ao-grafico-de-pizza"><i class="fa fa-check"></i><b>1.4</b> Alternativas ao Gráfico de Pizza</a></li>
+<li class="chapter" data-level="1.5" data-path="Pizza.html"><a href="Pizza.html#grafico-de-doughnut"><i class="fa fa-check"></i><b>1.5</b> Gráfico de <em>Doughnut</em></a></li>
+<li class="chapter" data-level="1.6" data-path="Pizza.html"><a href="Pizza.html#nightingale-rose-chart"><i class="fa fa-check"></i><b>1.6</b> Nightingale Rose Chart</a></li>
+<li class="chapter" data-level="1.7" data-path="Pizza.html"><a href="Pizza.html#graficos-do-tipo-ventilador-fanplot."><i class="fa fa-check"></i><b>1.7</b> Gráficos do tipo ventilador “Fanplot”.</a></li>
+<li class="chapter" data-level="1.8" data-path="Pizza.html"><a href="Pizza.html#graficos-do-tipo-visualizacao-em-circulo-circle-visualisation."><i class="fa fa-check"></i><b>1.8</b> Gráficos do tipo Visualização em círculo “Circle Visualisation”.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Barras.html"><a href="Barras.html"><i class="fa fa-check"></i><b>2</b> Gráfico de Barras</a><ul>
+<li class="chapter" data-level="2.1" data-path="Barras.html"><a href="Barras.html#graficos-de-barras-gap"><i class="fa fa-check"></i><b>2.1</b> Gráficos de Barras “GAP”</a></li>
+<li class="chapter" data-level="2.2" data-path="Barras.html"><a href="Barras.html#barras-no-ggplot2"><i class="fa fa-check"></i><b>2.2</b> Barras no ggplot2</a></li>
+<li class="chapter" data-level="2.3" data-path="Barras.html"><a href="Barras.html#rotulos-das-barras-no-ggplot2"><i class="fa fa-check"></i><b>2.3</b> Rótulos das Barras no ggplot2</a></li>
+<li class="chapter" data-level="2.4" data-path="Barras.html"><a href="Barras.html#alternativas-ao-grafico-de-barras"><i class="fa fa-check"></i><b>2.4</b> Alternativas ao Gráfico de Barras</a></li>
+<li class="chapter" data-level="2.5" data-path="Barras.html"><a href="Barras.html#graficos-de-pontos-dotplot-para-variaveis-discretas."><i class="fa fa-check"></i><b>2.5</b> Gráficos de pontos “Dotplot” para variáveis discretas.</a></li>
+<li class="chapter" data-level="2.6" data-path="Barras.html"><a href="Barras.html#grafico-com-barras-preenchidas-com-simbolos"><i class="fa fa-check"></i><b>2.6</b> Gráfico com Barras preenchidas com símbolos</a></li>
+<li class="chapter" data-level="2.7" data-path="Barras.html"><a href="Barras.html#grafico-de-barras-circular"><i class="fa fa-check"></i><b>2.7</b> Gráfico de Barras Circular</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Barras2VAR.html"><a href="Barras2VAR.html"><i class="fa fa-check"></i><b>3</b> Barras com duas variáveis</a><ul>
+<li class="chapter" data-level="3.1" data-path="Barras2VAR.html"><a href="Barras2VAR.html#barras-no-ggplot2-1"><i class="fa fa-check"></i><b>3.1</b> Barras no ggplot2</a></li>
+<li class="chapter" data-level="3.2" data-path="Barras2VAR.html"><a href="Barras2VAR.html#barras-lado-a-lado-no-ggplot2"><i class="fa fa-check"></i><b>3.2</b> Barras “lado a lado” no ggplot2</a></li>
+<li class="chapter" data-level="3.3" data-path="Barras2VAR.html"><a href="Barras2VAR.html#create-label-location-for-each-proportional-bar"><i class="fa fa-check"></i><b>3.3</b> create label location for each proportional bar</a></li>
+<li class="chapter" data-level="3.4" data-path="Barras2VAR.html"><a href="Barras2VAR.html#mosaico"><i class="fa fa-check"></i><b>3.4</b> MOSAICO</a></li>
+<li class="chapter" data-level="3.5" data-path="Barras2VAR.html"><a href="Barras2VAR.html#balloon-plot"><i class="fa fa-check"></i><b>3.5</b> Balloon plot</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Boxplot.html"><a href="Boxplot.html"><i class="fa fa-check"></i><b>4</b> Boxplot</a><ul>
+<li class="chapter" data-level="4.1" data-path="Boxplot.html"><a href="Boxplot.html#boxplot-no-ggplot2"><i class="fa fa-check"></i><b>4.1</b> Boxplot no ggplot2</a></li>
+<li class="chapter" data-level="4.2" data-path="Boxplot.html"><a href="Boxplot.html#alternativas-ao-boxplot"><i class="fa fa-check"></i><b>4.2</b> Alternativas ao Boxplot</a></li>
+<li class="chapter" data-level="4.3" data-path="Boxplot.html"><a href="Boxplot.html#trellis-plot-in-box-percentile-panel-decile-plot"><i class="fa fa-check"></i><b>4.3</b> Trellis plot in Box-Percentile Panel Decile plot</a></li>
+<li class="chapter" data-level="4.4" data-path="Boxplot.html"><a href="Boxplot.html#decile-plot"><i class="fa fa-check"></i><b>4.4</b> Decile plot</a></li>
+<li class="chapter" data-level="4.5" data-path="Boxplot.html"><a href="Boxplot.html#back"><i class="fa fa-check"></i><b>4.5</b> Back</a></li>
+<li class="chapter" data-level="4.6" data-path="Boxplot.html"><a href="Boxplot.html#notched-boxplot"><i class="fa fa-check"></i><b>4.6</b> Notched boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Hexabinscatterplot.html"><a href="Hexabinscatterplot.html"><i class="fa fa-check"></i><b>5</b> Hexabinscatterplot</a><ul>
+<li class="chapter" data-level="5.1" data-path="Hexabinscatterplot.html"><a href="Hexabinscatterplot.html#hexabin-xy-scatter-plot-and-transparent-point-xy-plot-r-markdown"><i class="fa fa-check"></i><b>5.1</b> Hexabin XY scatter plot and transparent point XY plot R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Histograma.html"><a href="Histograma.html"><i class="fa fa-check"></i><b>6</b> Histograma</a><ul>
+<li class="chapter" data-level="6.1" data-path="Histograma.html"><a href="Histograma.html#histograma"><i class="fa fa-check"></i><b>6.1</b> Histograma</a></li>
+<li class="chapter" data-level="6.2" data-path="Histograma.html"><a href="Histograma.html#histograma-no-ggplot2"><i class="fa fa-check"></i><b>6.2</b> Histograma no ggplot2</a></li>
+<li class="chapter" data-level="6.3" data-path="Histograma.html"><a href="Histograma.html#modificacao-do-histograma-no-ggplot2"><i class="fa fa-check"></i><b>6.3</b> Modificação do Histograma no ggplot2</a></li>
+<li class="chapter" data-level="6.4" data-path="Histograma.html"><a href="Histograma.html#histograma-avancado-no-ggplot2"><i class="fa fa-check"></i><b>6.4</b> Histograma Avançado no ggplot2</a></li>
+<li class="chapter" data-level="6.5" data-path="Histograma.html"><a href="Histograma.html#alternativas-ao-histograma"><i class="fa fa-check"></i><b>6.5</b> Alternativas ao Histograma</a></li>
+<li class="chapter" data-level="6.6" data-path="Histograma.html"><a href="Histograma.html#histograma-por-grupos-stack"><i class="fa fa-check"></i><b>6.6</b> Histograma por grupos ‘Stack’</a></li>
+<li class="chapter" data-level="6.7" data-path="Histograma.html"><a href="Histograma.html#back-to-back-histogramas"><i class="fa fa-check"></i><b>6.7</b> Back to back histogramas</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Densidade.html"><a href="Densidade.html"><i class="fa fa-check"></i><b>7</b> Densidade</a><ul>
+<li class="chapter" data-level="7.1" data-path="Densidade.html"><a href="Densidade.html#densidade"><i class="fa fa-check"></i><b>7.1</b> Densidade</a></li>
+<li class="chapter" data-level="7.2" data-path="Densidade.html"><a href="Densidade.html#grafico-de-densidade-no-ggplot2"><i class="fa fa-check"></i><b>7.2</b> Gráfico de densidade no ggplot2</a></li>
+<li class="chapter" data-level="7.3" data-path="Densidade.html"><a href="Densidade.html#modificacao-do-grafico-no-ggplot2"><i class="fa fa-check"></i><b>7.3</b> Modificação do gráfico no ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="MatrizCorrelacao.html"><a href="MatrizCorrelacao.html"><i class="fa fa-check"></i><b>8</b> Matriz de Correlação</a></li>
+<li class="chapter" data-level="9" data-path="Mapa.html"><a href="Mapa.html"><i class="fa fa-check"></i><b>9</b> Mapas</a><ul>
+<li class="chapter" data-level="9.1" data-path="Mapa.html"><a href="Mapa.html#mapa-global"><i class="fa fa-check"></i><b>9.1</b> Mapa global</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Violino.html"><a href="Violino.html"><i class="fa fa-check"></i><b>10</b> Violino Box plot</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Galeria de Gráficos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Barras" class="section level1">
+<h1><span class="header-section-number">Cap 2</span> Gráfico de Barras</h1>
+<p>Para que serve: O gráfico de barras é uma maneira de resumir a informação de uma variável qualitativa/categórica.</p>
+<p>Uma variável é chamada qualitativa, também conhecida como categórica, se seus valores pertencem a uma coleção de classes não superpostas. Exemplos comuns incluem notas de letra de estudante (A, B, C, D ou F), classificação de algo (Baixo, médio ou alto), Sexo (Feminino ou Masculino).</p>
+<p>Há vantagem do uso do gráfico de barras sobre o gráfico de pizza quando temos variáveis ordinais ou quando há muitas categorias de análise.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(mtcars)
+mtcars &lt;-<span class="st"> </span><span class="kw">within</span>(mtcars, {
+  am &lt;-<span class="st"> </span><span class="kw">factor</span>(am, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&#39;Automático&#39;</span>,<span class="st">&#39;Manual&#39;</span>))
+})
+mtcars &lt;-<span class="st"> </span><span class="kw">within</span>(mtcars, {
+  vs &lt;-<span class="st"> </span><span class="kw">factor</span>(vs, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&#39;Não&#39;</span>,<span class="st">&#39;Sim&#39;</span>))
+})
+<span class="kw">par</span>(<span class="dt">bg=</span><span class="st">&quot;#fdf6e3&quot;</span>) 
+
+contagem =<span class="st"> </span><span class="kw">table</span>(mtcars<span class="op">$</span>am)
+nomes =<span class="st"> </span><span class="kw">levels</span>(mtcars<span class="op">$</span>am)
+porcent =<span class="st"> </span><span class="kw">round</span>(<span class="kw">prop.table</span>(contagem)<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>)
+rotulo=<span class="kw">paste</span>(nomes,<span class="st">&quot; (&quot;</span>,porcent,<span class="st">&quot;%&quot;</span>,<span class="st">&quot;)&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)
+barras&lt;-<span class="kw">barplot</span>(<span class="kw">table</span>(mtcars<span class="op">$</span>am), <span class="dt">ylab=</span><span class="st">&quot;Frequência&quot;, main=&quot;</span>Tipo de marcha<span class="st">&quot;, col=c(&quot;</span>red<span class="st">&quot;,&quot;</span>blue<span class="st">&quot;))</span>
+<span class="st">text(barras, 0, rotulo,cex=1,pos=3,col =&quot;</span><span class="co">#ffffff&quot;)</span></code></pre></div>
+<p><img src="02-barras_files/figure-html/barras-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">contagem2 =<span class="st"> </span><span class="kw">table</span>(mtcars<span class="op">$</span>vs)
+nomes2 =<span class="st"> </span><span class="kw">levels</span>(mtcars<span class="op">$</span>vs)
+porcent2 =<span class="st"> </span><span class="kw">round</span>(<span class="kw">prop.table</span>(contagem2)<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>)
+rotulo2=<span class="kw">paste</span>(nomes2,<span class="st">&quot; (&quot;</span>,porcent2,<span class="st">&quot;%&quot;</span>,<span class="st">&quot;)&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)
+barras2&lt;-<span class="kw">barplot</span>(<span class="kw">table</span>(mtcars<span class="op">$</span>vs), <span class="dt">ylab=</span><span class="st">&quot;Frequência&quot;, main=&quot;</span>Tipo<span class="st">&quot;, col=c(&quot;</span><span class="co">#003154&quot;,&quot;#dd4a37&quot;))</span>
+<span class="kw">text</span>(barras2, <span class="dv">0</span>, rotulo,<span class="dt">cex=</span><span class="dv">1</span>,<span class="dt">pos=</span><span class="dv">3</span>,<span class="dt">col =</span><span class="st">&quot;#ffffff&quot;</span>)</code></pre></div>
+<p><img src="02-barras_files/figure-html/barras-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">bg=</span><span class="st">&quot;#fdf6e3&quot;</span>) 
+<span class="kw">library</span>(plotrix)
+barpos&lt;-<span class="kw">barplot</span>(contagem,<span class="dt">main=</span><span class="st">&quot;Gráfico de Barras&quot;</span>,<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>))
+<span class="kw">barlabels</span>(barpos,contagem,<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>))</code></pre></div>
+<p><img src="02-barras_files/figure-html/barras2-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barpos2&lt;-<span class="kw">barplot</span>(contagem2,<span class="dt">main=</span><span class="st">&quot;Gráfico de Barras&quot;</span>, <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;#003154&quot;</span>,<span class="st">&quot;#dd4a37&quot;</span>))
+<span class="kw">barlabels</span>(barpos2,contagem2,<span class="dt">cex=</span><span class="fl">1.3</span>,<span class="dt">prop=</span><span class="fl">0.1</span>, <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;#003154&quot;</span>,<span class="st">&quot;#dd4a37&quot;</span>))</code></pre></div>
+<p><img src="02-barras_files/figure-html/barras2-2.png" width="672" /></p>
+<div id="graficos-de-barras-gap" class="section level2">
+<h2><span class="header-section-number">2.1</span> Gráficos de Barras “GAP”</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(RColorBrewer)
+<span class="kw">par</span>(<span class="dt">bg=</span><span class="st">&quot;#fdf6e3&quot;</span>) 
+<span class="co">#display.brewer.all()</span>
+COR&lt;-<span class="kw">brewer.pal</span>(<span class="dv">4</span>,<span class="st">&quot;Dark2&quot;</span>)
+<span class="co">#COR</span>
+
+<span class="kw">library</span>(plotrix)
+twogrp&lt;-<span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>)<span class="op">+</span><span class="dv">4</span>,<span class="kw">rnorm</span>(<span class="dv">10</span>)<span class="op">+</span><span class="dv">20</span>)
+ <span class="kw">gap.barplot</span>(twogrp,<span class="dt">gap=</span><span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">16</span>),<span class="dt">xlab=</span><span class="st">&quot;Index&quot;</span>,<span class="dt">ytics=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">17</span>,<span class="dv">20</span>),
+  <span class="dt">ylab=</span><span class="st">&quot;Group values&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Gráfico de Barras com um&#39;GAP&#39;&quot;</span>)</code></pre></div>
+<p><img src="02-barras_files/figure-html/barrasGAP-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">gap.barplot</span>(twogrp,<span class="dt">gap=</span><span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">16</span>),<span class="dt">xlab=</span><span class="st">&quot;Index&quot;</span>,<span class="dt">ytics=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">17</span>,<span class="dv">20</span>),
+  <span class="dt">ylab=</span><span class="st">&quot;Valores&quot;</span>,<span class="dt">horiz=</span><span class="ot">TRUE</span>,<span class="dt">main=</span><span class="st">&quot;Gráfico de Barras com um&#39;GAP&#39;&quot;</span>)</code></pre></div>
+<p><img src="02-barras_files/figure-html/barrasGAP-2.png" width="672" /></p>
+</div>
+<div id="barras-no-ggplot2" class="section level2">
+<h2><span class="header-section-number">2.2</span> Barras no ggplot2</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">ggplot</span>(<span class="dt">data=</span>mtcars, <span class="kw">aes</span>(<span class="dt">x=</span>am)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;count&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;steelblue&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_minimal</span>()</code></pre></div>
+<p><img src="02-barras_files/figure-html/barrasggplot-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&#39;RCurl&#39;)</span>
+<span class="kw">library</span>(RCurl)</code></pre></div>
+<pre><code>## Carregando pacotes exigidos: bitops</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#X &lt;- read.csv(url(&quot;http://some.where.net/data/foo.csv&quot;))</span>
+x &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class="st">&quot;https://raw.githubusercontent.com/DATAUNIRIO/Base_de_dados/master/Estados.csv&quot;</span>)
+BaseUF &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">text=</span>x, <span class="dt">header=</span>T, <span class="dt">quote=</span><span class="st">&quot;&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>,<span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)
+<span class="kw">ggplot</span>(<span class="dt">data=</span>BaseUF, <span class="kw">aes</span>(<span class="dt">x=</span>Regiao_Geografica)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;count&quot;</span>, <span class="dt">fill=</span><span class="kw">c</span>(<span class="st">&quot;#10c6d3&quot;</span>,<span class="st">&quot;#0ea5af&quot;</span>,<span class="st">&quot;#0b8b93&quot;</span>,<span class="st">&quot;#096c72&quot;</span>,<span class="st">&quot;#064144&quot;</span>))<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_minimal</span>()</code></pre></div>
+<p><img src="02-barras_files/figure-html/barrasggplot-2.png" width="672" /></p>
+</div>
+<div id="rotulos-das-barras-no-ggplot2" class="section level2">
+<h2><span class="header-section-number">2.3</span> Rótulos das Barras no ggplot2</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dados =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">round</span>(<span class="kw">prop.table</span>(contagem)<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>))
+dados &lt;-<span class="st"> </span><span class="kw">within</span>(dados, {
+  Var1 &lt;-<span class="st"> </span><span class="kw">factor</span>(Var1, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&#39;Automático&#39;</span>,<span class="st">&#39;Manual&#39;</span>))
+})
+<span class="kw">attach</span>(dados)
+dados &lt;-<span class="st"> </span>dados[<span class="kw">order</span>(Freq),] 
+<span class="kw">detach</span>(dados)
+
+<span class="co"># Fora das Barras</span>
+<span class="kw">ggplot</span>(<span class="dt">data=</span>dados, <span class="kw">aes</span>(<span class="dt">x=</span>Var1, <span class="dt">y=</span>Freq)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;steelblue&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span>Freq), <span class="dt">vjust=</span><span class="op">-</span><span class="fl">0.3</span>, <span class="dt">size=</span><span class="fl">3.5</span>)<span class="op">+</span>
+<span class="st">   </span><span class="kw">ylab</span>(<span class="st">&quot;Frequência&quot;) +</span>
+<span class="st">   xlab(&quot;</span>Tipo<span class="st">&quot;) +</span>
+<span class="st">   theme_minimal()</span></code></pre></div>
+<p><img src="02-barras_files/figure-html/barrasggplot2-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Dentro das Barras</span>
+<span class="kw">ggplot</span>(<span class="dt">data=</span>dados, <span class="kw">aes</span>(<span class="dt">x=</span>Var1, <span class="dt">y=</span>Freq)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;#275b70&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span>Freq), <span class="dt">vjust=</span><span class="fl">1.6</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>,<span class="dt">size=</span><span class="fl">3.5</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Frequência&quot;) +</span>
+<span class="st">  xlab(&quot;</span>Tipo<span class="st">&quot;) +</span>
+<span class="st">  theme_minimal()</span></code></pre></div>
+<p><img src="02-barras_files/figure-html/barrasggplot2-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span>BaseUF, <span class="kw">aes</span>(<span class="dt">x=</span>Regiao_Geografica)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;count&quot;</span>, <span class="dt">fill=</span><span class="kw">c</span>(<span class="st">&quot;#10c6d3&quot;</span>,<span class="st">&quot;#0ea5af&quot;</span>,<span class="st">&quot;#0b8b93&quot;</span>,<span class="st">&quot;#096c72&quot;</span>,<span class="st">&quot;#064144&quot;</span>))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">stat=</span><span class="st">&#39;count&#39;</span>,<span class="kw">aes</span>(<span class="dt">label=</span>..count..),<span class="dt">vjust=</span><span class="fl">1.6</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>,<span class="dt">size=</span><span class="fl">3.5</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Frequência&quot;) +</span>
+<span class="st">  xlab(&quot;</span>Região Geográfica<span class="st">&quot;) +</span>
+<span class="st">  theme_minimal()</span></code></pre></div>
+<p><img src="02-barras_files/figure-html/barrasggplot2-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span>BaseUF, <span class="kw">aes</span>(<span class="dt">x=</span>Regiao_Geografica)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;count&quot;</span>, <span class="dt">fill=</span><span class="kw">c</span>(<span class="st">&quot;#10c6d3&quot;</span>,<span class="st">&quot;#0ea5af&quot;</span>,<span class="st">&quot;#0b8b93&quot;</span>,<span class="st">&quot;#096c72&quot;</span>,<span class="st">&quot;#064144&quot;</span>))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">stat=</span><span class="st">&quot;count&quot;</span>,<span class="kw">aes</span>(<span class="dt">label=</span>..count..),<span class="dt">vjust=</span><span class="fl">1.6</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>,<span class="dt">size=</span><span class="fl">3.5</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Frequência&quot;) +</span>
+<span class="st">  xlab(&quot;</span>Região Geográfica<span class="st">&quot;) +</span>
+<span class="st">  theme_minimal()</span></code></pre></div>
+<p><img src="02-barras_files/figure-html/barrasggplot2-4.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span>BaseUF, <span class="kw">aes</span>(<span class="dt">x=</span>Regiao_Geografica)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;count&quot;</span>, <span class="dt">fill=</span><span class="kw">c</span>(<span class="st">&quot;#10c6d3&quot;</span>,<span class="st">&quot;#0ea5af&quot;</span>,<span class="st">&quot;#0b8b93&quot;</span>,<span class="st">&quot;#096c72&quot;</span>,<span class="st">&quot;#064144&quot;</span>))<span class="op">+</span>
+<span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">round</span>(<span class="kw">prop.table</span>(..count..)<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>), <span class="dt">y=</span> ..count.. ), <span class="dt">stat=</span> <span class="st">&quot;count&quot;</span>, <span class="dt">vjust=</span><span class="fl">1.6</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>,<span class="dt">size=</span><span class="fl">5.5</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Percentual&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;Regiao_Geografica&quot;</span>)</code></pre></div>
+<p><img src="02-barras_files/figure-html/barrasggplot2-5.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">error &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">6</span>)
+<span class="co"># adding error bars</span>
+plt&lt;-<span class="kw">ggplot</span>(<span class="dt">data=</span>dados, <span class="kw">aes</span>(<span class="dt">x=</span>Var1, <span class="dt">y=</span>Freq)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;#275b70&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span>Freq), <span class="dt">vjust=</span><span class="fl">1.6</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>,<span class="dt">size=</span><span class="fl">3.5</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Frequência&quot;) +</span>
+<span class="st">  xlab(&quot;</span>Tipo<span class="st">&quot;) +</span>
+<span class="st">  theme_minimal()</span>
+
+<span class="st">plt +  geom_errorbar(aes(ymin=Freq-error, ymax=Freq+error), width=.1, position=position_dodge(.1))  </span></code></pre></div>
+<p><img src="02-barras_files/figure-html/barrasggplot2-6.png" width="672" /></p>
+</div>
+<div id="alternativas-ao-grafico-de-barras" class="section level2">
+<h2><span class="header-section-number">2.4</span> Alternativas ao Gráfico de Barras</h2>
+</div>
+<div id="graficos-de-pontos-dotplot-para-variaveis-discretas." class="section level2">
+<h2><span class="header-section-number">2.5</span> Gráficos de pontos “Dotplot” para variáveis discretas.</h2>
+<p>Descrição. Um gráfico de pontos consiste em pontos de dados plotados em uma escala bastante simples, geralmente usando círculos preenchidos. É um tipo de gráfico utilizado na estatística para conjuntos de dados relativamente pequenos onde os valores se enquadram em uma série de barras discretas (categorias). Um gráfico de pontos é semelhante a um gráfico de barras porque a altura de cada “barra” de pontos é igual ao número de itens em uma categoria específica.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plotrix)  
+x &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">100</span>,<span class="dv">10</span>)
+<span class="kw">dotplot.mtb</span>(x,<span class="dt">yaxis=</span><span class="ot">TRUE</span>,<span class="dt">main=</span><span class="st">&quot;Dotplot&quot;</span>)</code></pre></div>
+<p><img src="02-barras_files/figure-html/dotplot-1.png" width="672" /></p>
+</div>
+<div id="grafico-com-barras-preenchidas-com-simbolos" class="section level2">
+<h2><span class="header-section-number">2.6</span> Gráfico com Barras preenchidas com símbolos</h2>
+<p>Descrição. Produz um gráfico de barras onde cada unidade de ‘barra’ é preenchida com o número de símbolos igual ao tamanho da barra.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1001</span>)
+bvals &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rpois</span>(<span class="dv">12</span>,<span class="dv">20</span>),<span class="dt">nrow=</span><span class="dv">3</span>)
+b &lt;-<span class="st"> </span><span class="kw">symbolbarplot</span>(bvals)</code></pre></div>
+<p><img src="02-barras_files/figure-html/symbolbarplot-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(ggplot2)
+
+<span class="co"># function </span>
+ruler.bar.plot &lt;-<span class="cf">function</span>(gg, nn, <span class="dt">mjtick =</span><span class="dv">1</span>, <span class="dt">mntick =</span> <span class="fl">0.2</span>, <span class="dt">mjtickcol =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">mntickcol =</span> <span class="st">&quot;white&quot;</span>){
+seq.list&lt;-<span class="kw">list</span>()
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(gg)){
+  ystart&lt;-<span class="kw">seq</span>(mntick ,gg[i],mntick )
+  yend&lt;-ystart
+  xstart&lt;-<span class="kw">rep</span>(i<span class="op">-</span><span class="fl">0.45</span>,<span class="kw">length</span>(ystart))
+  xend&lt;-xstart<span class="op">+</span><span class="fl">0.1</span>
+  nam.val&lt;-<span class="kw">c</span>(nn[i],<span class="kw">rep</span>(<span class="ot">NA</span>,<span class="kw">length</span>(ystart)<span class="op">-</span><span class="dv">1</span>))
+  numb.val&lt;-<span class="kw">c</span>(gg[i],<span class="kw">rep</span>(<span class="ot">NA</span>,<span class="kw">length</span>(ystart)<span class="op">-</span><span class="dv">1</span>))
+  seq.list[[i]]&lt;-<span class="kw">data.frame</span>(nam.val,numb.val,xstart,xend,ystart,yend)
+}
+df&lt;-<span class="kw">as.data.frame</span>(<span class="kw">do.call</span>(rbind, seq.list))
+p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(nam.val))
+p <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">y=</span>numb.val,<span class="dt">fill=</span>nam.val),<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="dt">width=</span><span class="fl">0.5</span>,<span class="dt">color=</span>mjtickcol,<span class="dt">lwd=</span><span class="fl">1.1</span>) <span class="op">+</span>
+<span class="st">        </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x=</span>xstart,<span class="dt">y=</span>ystart,<span class="dt">xend=</span>xend,<span class="dt">yend=</span>yend), <span class="dt">color=</span>mjtickcol) <span class="op">+</span>
+<span class="st">        </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">max</span>(gg)<span class="op">+</span><span class="fl">0.5</span>))  <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_discrete</span>(<span class="dt">limits=</span> nn) <span class="op">+</span>
+<span class="st">            </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="kw">seq</span>(mjtick,<span class="kw">max</span>(gg),mjtick),<span class="dt">color=</span>mntickcol,<span class="dt">lwd=</span><span class="fl">1.1</span>)<span class="op">+</span><span class="st">   </span><span class="kw">geom_text</span>(<span class="kw">aes</span> (<span class="dt">y =</span> numb.val, <span class="dt">label =</span> numb.val), <span class="dt">vjust=</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> ) <span class="op">+</span>
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">         </span><span class="kw">theme_bw</span>()<span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">axis.title=</span><span class="kw">element_blank</span>(),
+               <span class="dt">axis.text.y=</span><span class="kw">element_blank</span>(),
+               <span class="dt">axis.text.x=</span><span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>,<span class="dt">size=</span><span class="kw">rel</span>(<span class="fl">1.5</span>)),
+               <span class="dt">axis.ticks=</span><span class="kw">element_blank</span>(),
+               <span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> mntickcol),
+               <span class="dt">panel.border=</span><span class="kw">element_blank</span>(),
+               <span class="dt">panel.grid=</span><span class="kw">element_blank</span>(),
+               <span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)
+}
+
+<span class="co"># human height in inches, ticking done at each 12</span>
+htinch &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">66</span>, <span class="dv">72</span>, <span class="dv">88</span>, <span class="dv">54</span>)
+id &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>)
+<span class="kw">ruler.bar.plot</span>(htinch, id, <span class="dt">mjtick =</span><span class="dv">12</span>, <span class="dt">mntick =</span> <span class="dv">1</span>,  <span class="dt">mjtickcol =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">mntickcol =</span> <span class="st">&quot;white&quot;</span>)</code></pre></div>
+<p><img src="02-barras_files/figure-html/barplots-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">VV =<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.13</span>, <span class="fl">0.33</span>, <span class="fl">0.82</span>, <span class="fl">0.46</span>)
+LV =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;L&quot;</span>, <span class="st">&quot;N&quot;</span>)
+<span class="kw">ruler.bar.plot</span>(VV, LV, <span class="dt">mjtick =</span><span class="fl">0.1</span>, <span class="dt">mntick =</span> <span class="fl">0.02</span>,  <span class="dt">mjtickcol =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">mntickcol =</span> <span class="st">&quot;white&quot;</span>)</code></pre></div>
+<p><img src="02-barras_files/figure-html/barplots-2.png" width="672" /></p>
+</div>
+<div id="grafico-de-barras-circular" class="section level2">
+<h2><span class="header-section-number">2.7</span> Gráfico de Barras Circular</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#circular bar plot </span>
+<span class="kw">library</span>(ggplot2)
+<span class="co">#DATA</span>
+catg &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;G&quot;</span>)
+percent &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">88</span>, <span class="dv">76</span>, <span class="dv">72</span>, <span class="dv">69</span>, <span class="dv">59</span>, <span class="dv">48</span>)
+category &lt;-<span class="st"> </span><span class="kw">paste</span> (catg, <span class="st">&quot;-&quot;</span>, percent, <span class="st">&quot;%&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
+myd &lt;-<span class="kw">data.frame</span>(category,percent)
+<span class="co"># converting to factor and applying to </span>
+<span class="co">#levels to set proper order of bars </span>
+myd<span class="op">$</span>category &lt;-<span class="kw">factor</span>(myd<span class="op">$</span>category,<span class="dt">levels=</span><span class="kw">rev</span>(myd<span class="op">$</span>category))
+<span class="co"># plot</span>
+plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(myd, <span class="kw">aes</span>(<span class="dt">x =</span> category, <span class="dt">y =</span> percent,<span class="dt">fill =</span> category)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="fl">0.85</span>, <span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">coord_polar</span>(<span class="dt">theta =</span> <span class="st">&quot;y&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Gráfico circular&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> myd, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">3</span>, <span class="kw">aes</span>(<span class="dt">x =</span> category, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">label =</span> category)) 
+
+plt <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;red1&quot;</span>,<span class="st">&quot;red4&quot;</span>, <span class="st">&quot;green1&quot;</span>, <span class="st">&quot;green4&quot;</span>, <span class="st">&quot;blue1&quot;</span>, <span class="st">&quot;blue4&quot;</span>))<span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>, <span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(), <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>(),          <span class="dt">axis.line =</span> <span class="kw">element_blank</span>(), <span class="dt">axis.text.y =</span> <span class="kw">element_blank</span>(),          <span class="dt">axis.text.x =</span> <span class="kw">element_blank</span>(), <span class="dt">axis.ticks =</span> <span class="kw">element_blank</span>())</code></pre></div>
+<p><img src="02-barras_files/figure-html/barplots2-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Pizza.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Barras2VAR.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-barras.Rmd",
+"text": "Edit"
+},
+"download": ["Galeria_de_Grafico.pdf", "Galeria_de_Grafico.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

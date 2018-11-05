@@ -2,7 +2,7 @@
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-require(RcmdrMisc)
+#require(RcmdrMisc)
 ```
 
 Definição: uma  uma representação gráfica em formato de retângulos cuja área é proporcional à frequência de uma variável quantitativa e cuja largura é igual ao intervalo de classe.
@@ -29,21 +29,6 @@ COR<-brewer.pal(5,"Blues")
 
 ## Boxplot no ggplot2
 
-```{r histogramaggplot, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
-par(bg="#fdf6e3") 
-library(ggplot2)
-
-```
-
-
-
-```{r histogramaggplot2, message=FALSE, warning=FALSE}
-par(bg="#fdf6e3") 
-library(ggplot2)
-
-```
-
-## Boxplot no ggplot2
 
 ```{r histogramaggplot3, message=FALSE, warning=FALSE}
 par(bg="#fdf6e3") 
@@ -51,7 +36,8 @@ par(bg="#fdf6e3")
 var <- rnorm(1000, 50,10)
 group <- c(rep("A",100), rep("B",100), rep("C",100), rep("D",100), rep("E", 100))
 dataf <- data.frame(var, group)
- require(ggplot2)
+
+require(ggplot2)
 plot2 <- ggplot (dataf, aes (y = var, x= group, fill = group ))
 plot2 + geom_boxplot()+theme_bw( )
 ```
@@ -80,7 +66,7 @@ bwplot(g ~ x, panel=panel.bpplot, probs=c(.025,seq(.25,.49,by=.01)))
 
 ## Decile plot
 
-![](C:/Users/Hp/Documents/GitHub/GALERIA_DE_GRAFICOS/decile.jpg)
+
 ```{r histStack2, message=FALSE, warning=FALSE}
 # decile plot with reference lines at outer quintiles and median
 bwplot(g ~ x, panel=panel.bpplot, probs=c(.1,.2,.3,.4), qref=c(.5,.2,.8))

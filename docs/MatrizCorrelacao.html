@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Galeria de Gráficos</title>
+  <meta name="description" content="Este é um projeto de livro aberto sobre elaboração de gráficos com R.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Galeria de Gráficos" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este é um projeto de livro aberto sobre elaboração de gráficos com R." />
+  <meta name="github-repo" content="Lucianea/GALERIA_DE_GRAFICOS" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Galeria de Gráficos" />
+  
+  <meta name="twitter:description" content="Este é um projeto de livro aberto sobre elaboração de gráficos com R." />
+  
+
+<meta name="author" content="Steven Dutt-Ross &amp; Luciane Alcoforado">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="Densidade.html">
+<link rel="next" href="Mapa.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/d3-3.5.3/d3.js"></script>
+<script src="libs/bubbles-binding-0.2/bubbles.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Galeria de Graficos</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#nossa-proposta"><i class="fa fa-check"></i><b>0.1</b> Nossa proposta</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="Pizza.html"><a href="Pizza.html"><i class="fa fa-check"></i><b>1</b> Gráfico de Pizza</a><ul>
+<li class="chapter" data-level="1.1" data-path="Pizza.html"><a href="Pizza.html#pizza-3d"><i class="fa fa-check"></i><b>1.1</b> Pizza 3D</a></li>
+<li class="chapter" data-level="1.2" data-path="Pizza.html"><a href="Pizza.html#pizza-no-ggplot2"><i class="fa fa-check"></i><b>1.2</b> Pizza no ggplot2</a></li>
+<li class="chapter" data-level="1.3" data-path="Pizza.html"><a href="Pizza.html#modificacao-da-pizza-no-ggplot2"><i class="fa fa-check"></i><b>1.3</b> Modificação da pizza no ggplot2</a></li>
+<li class="chapter" data-level="1.4" data-path="Pizza.html"><a href="Pizza.html#alternativas-ao-grafico-de-pizza"><i class="fa fa-check"></i><b>1.4</b> Alternativas ao Gráfico de Pizza</a></li>
+<li class="chapter" data-level="1.5" data-path="Pizza.html"><a href="Pizza.html#grafico-de-doughnut"><i class="fa fa-check"></i><b>1.5</b> Gráfico de <em>Doughnut</em></a></li>
+<li class="chapter" data-level="1.6" data-path="Pizza.html"><a href="Pizza.html#nightingale-rose-chart"><i class="fa fa-check"></i><b>1.6</b> Nightingale Rose Chart</a></li>
+<li class="chapter" data-level="1.7" data-path="Pizza.html"><a href="Pizza.html#graficos-do-tipo-ventilador-fanplot."><i class="fa fa-check"></i><b>1.7</b> Gráficos do tipo ventilador “Fanplot”.</a></li>
+<li class="chapter" data-level="1.8" data-path="Pizza.html"><a href="Pizza.html#graficos-do-tipo-visualizacao-em-circulo-circle-visualisation."><i class="fa fa-check"></i><b>1.8</b> Gráficos do tipo Visualização em círculo “Circle Visualisation”.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Barras.html"><a href="Barras.html"><i class="fa fa-check"></i><b>2</b> Gráfico de Barras</a><ul>
+<li class="chapter" data-level="2.1" data-path="Barras.html"><a href="Barras.html#graficos-de-barras-gap"><i class="fa fa-check"></i><b>2.1</b> Gráficos de Barras “GAP”</a></li>
+<li class="chapter" data-level="2.2" data-path="Barras.html"><a href="Barras.html#barras-no-ggplot2"><i class="fa fa-check"></i><b>2.2</b> Barras no ggplot2</a></li>
+<li class="chapter" data-level="2.3" data-path="Barras.html"><a href="Barras.html#rotulos-das-barras-no-ggplot2"><i class="fa fa-check"></i><b>2.3</b> Rótulos das Barras no ggplot2</a></li>
+<li class="chapter" data-level="2.4" data-path="Barras.html"><a href="Barras.html#alternativas-ao-grafico-de-barras"><i class="fa fa-check"></i><b>2.4</b> Alternativas ao Gráfico de Barras</a></li>
+<li class="chapter" data-level="2.5" data-path="Barras.html"><a href="Barras.html#graficos-de-pontos-dotplot-para-variaveis-discretas."><i class="fa fa-check"></i><b>2.5</b> Gráficos de pontos “Dotplot” para variáveis discretas.</a></li>
+<li class="chapter" data-level="2.6" data-path="Barras.html"><a href="Barras.html#grafico-com-barras-preenchidas-com-simbolos"><i class="fa fa-check"></i><b>2.6</b> Gráfico com Barras preenchidas com símbolos</a></li>
+<li class="chapter" data-level="2.7" data-path="Barras.html"><a href="Barras.html#grafico-de-barras-circular"><i class="fa fa-check"></i><b>2.7</b> Gráfico de Barras Circular</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Barras2VAR.html"><a href="Barras2VAR.html"><i class="fa fa-check"></i><b>3</b> Barras com duas variáveis</a><ul>
+<li class="chapter" data-level="3.1" data-path="Barras2VAR.html"><a href="Barras2VAR.html#barras-no-ggplot2-1"><i class="fa fa-check"></i><b>3.1</b> Barras no ggplot2</a></li>
+<li class="chapter" data-level="3.2" data-path="Barras2VAR.html"><a href="Barras2VAR.html#barras-lado-a-lado-no-ggplot2"><i class="fa fa-check"></i><b>3.2</b> Barras “lado a lado” no ggplot2</a></li>
+<li class="chapter" data-level="3.3" data-path="Barras2VAR.html"><a href="Barras2VAR.html#create-label-location-for-each-proportional-bar"><i class="fa fa-check"></i><b>3.3</b> create label location for each proportional bar</a></li>
+<li class="chapter" data-level="3.4" data-path="Barras2VAR.html"><a href="Barras2VAR.html#mosaico"><i class="fa fa-check"></i><b>3.4</b> MOSAICO</a></li>
+<li class="chapter" data-level="3.5" data-path="Barras2VAR.html"><a href="Barras2VAR.html#balloon-plot"><i class="fa fa-check"></i><b>3.5</b> Balloon plot</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Boxplot.html"><a href="Boxplot.html"><i class="fa fa-check"></i><b>4</b> Boxplot</a><ul>
+<li class="chapter" data-level="4.1" data-path="Boxplot.html"><a href="Boxplot.html#boxplot-no-ggplot2"><i class="fa fa-check"></i><b>4.1</b> Boxplot no ggplot2</a></li>
+<li class="chapter" data-level="4.2" data-path="Boxplot.html"><a href="Boxplot.html#alternativas-ao-boxplot"><i class="fa fa-check"></i><b>4.2</b> Alternativas ao Boxplot</a></li>
+<li class="chapter" data-level="4.3" data-path="Boxplot.html"><a href="Boxplot.html#trellis-plot-in-box-percentile-panel-decile-plot"><i class="fa fa-check"></i><b>4.3</b> Trellis plot in Box-Percentile Panel Decile plot</a></li>
+<li class="chapter" data-level="4.4" data-path="Boxplot.html"><a href="Boxplot.html#decile-plot"><i class="fa fa-check"></i><b>4.4</b> Decile plot</a></li>
+<li class="chapter" data-level="4.5" data-path="Boxplot.html"><a href="Boxplot.html#back"><i class="fa fa-check"></i><b>4.5</b> Back</a></li>
+<li class="chapter" data-level="4.6" data-path="Boxplot.html"><a href="Boxplot.html#notched-boxplot"><i class="fa fa-check"></i><b>4.6</b> Notched boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Hexabinscatterplot.html"><a href="Hexabinscatterplot.html"><i class="fa fa-check"></i><b>5</b> Hexabinscatterplot</a><ul>
+<li class="chapter" data-level="5.1" data-path="Hexabinscatterplot.html"><a href="Hexabinscatterplot.html#hexabin-xy-scatter-plot-and-transparent-point-xy-plot-r-markdown"><i class="fa fa-check"></i><b>5.1</b> Hexabin XY scatter plot and transparent point XY plot R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Histograma.html"><a href="Histograma.html"><i class="fa fa-check"></i><b>6</b> Histograma</a><ul>
+<li class="chapter" data-level="6.1" data-path="Histograma.html"><a href="Histograma.html#histograma"><i class="fa fa-check"></i><b>6.1</b> Histograma</a></li>
+<li class="chapter" data-level="6.2" data-path="Histograma.html"><a href="Histograma.html#histograma-no-ggplot2"><i class="fa fa-check"></i><b>6.2</b> Histograma no ggplot2</a></li>
+<li class="chapter" data-level="6.3" data-path="Histograma.html"><a href="Histograma.html#modificacao-do-histograma-no-ggplot2"><i class="fa fa-check"></i><b>6.3</b> Modificação do Histograma no ggplot2</a></li>
+<li class="chapter" data-level="6.4" data-path="Histograma.html"><a href="Histograma.html#histograma-avancado-no-ggplot2"><i class="fa fa-check"></i><b>6.4</b> Histograma Avançado no ggplot2</a></li>
+<li class="chapter" data-level="6.5" data-path="Histograma.html"><a href="Histograma.html#alternativas-ao-histograma"><i class="fa fa-check"></i><b>6.5</b> Alternativas ao Histograma</a></li>
+<li class="chapter" data-level="6.6" data-path="Histograma.html"><a href="Histograma.html#histograma-por-grupos-stack"><i class="fa fa-check"></i><b>6.6</b> Histograma por grupos ‘Stack’</a></li>
+<li class="chapter" data-level="6.7" data-path="Histograma.html"><a href="Histograma.html#back-to-back-histogramas"><i class="fa fa-check"></i><b>6.7</b> Back to back histogramas</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Densidade.html"><a href="Densidade.html"><i class="fa fa-check"></i><b>7</b> Densidade</a><ul>
+<li class="chapter" data-level="7.1" data-path="Densidade.html"><a href="Densidade.html#densidade"><i class="fa fa-check"></i><b>7.1</b> Densidade</a></li>
+<li class="chapter" data-level="7.2" data-path="Densidade.html"><a href="Densidade.html#grafico-de-densidade-no-ggplot2"><i class="fa fa-check"></i><b>7.2</b> Gráfico de densidade no ggplot2</a></li>
+<li class="chapter" data-level="7.3" data-path="Densidade.html"><a href="Densidade.html#modificacao-do-grafico-no-ggplot2"><i class="fa fa-check"></i><b>7.3</b> Modificação do gráfico no ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="MatrizCorrelacao.html"><a href="MatrizCorrelacao.html"><i class="fa fa-check"></i><b>8</b> Matriz de Correlação</a></li>
+<li class="chapter" data-level="9" data-path="Mapa.html"><a href="Mapa.html"><i class="fa fa-check"></i><b>9</b> Mapas</a><ul>
+<li class="chapter" data-level="9.1" data-path="Mapa.html"><a href="Mapa.html#mapa-global"><i class="fa fa-check"></i><b>9.1</b> Mapa global</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Violino.html"><a href="Violino.html"><i class="fa fa-check"></i><b>10</b> Violino Box plot</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Galeria de Gráficos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="MatrizCorrelacao" class="section level1">
+<h1><span class="header-section-number">Cap 8</span> Matriz de Correlação</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(car)</code></pre></div>
+<pre><code>## Carregando pacotes exigidos: car</code></pre>
+<pre><code>## Carregando pacotes exigidos: carData</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(mtcars)
+mtcars &lt;-<span class="st"> </span><span class="kw">within</span>(mtcars, {
+  am &lt;-<span class="st"> </span><span class="kw">factor</span>(am, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&#39;Automático&#39;</span>,<span class="st">&#39;Manual&#39;</span>))
+})
+mtcars &lt;-<span class="st"> </span><span class="kw">within</span>(mtcars, {
+  vs &lt;-<span class="st"> </span><span class="kw">factor</span>(vs, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&#39;Não&#39;</span>,<span class="st">&#39;Sim&#39;</span>))
+})
+<span class="kw">par</span>(<span class="dt">bg=</span><span class="st">&quot;#fdf6e3&quot;</span>) 
+
+CARROS &lt;-<span class="st"> </span>mtcars[, <span class="kw">c</span>(<span class="st">&#39;mpg&#39;</span>, <span class="st">&#39;cyl&#39;</span>, <span class="st">&#39;disp&#39;</span>, <span class="st">&#39;hp&#39;</span>, <span class="st">&#39;carb&#39;</span>,<span class="st">&#39;drat&#39;</span>,<span class="st">&#39;wt&#39;</span>)]</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">bg=</span><span class="st">&quot;#fdf6e3&quot;</span>) 
+<span class="kw">library</span>(<span class="st">&quot;PerformanceAnalytics&quot;</span>)
+<span class="kw">chart.Correlation</span>(CARROS, <span class="dt">histogram=</span><span class="ot">TRUE</span>, <span class="dt">pch=</span><span class="dv">19</span>)</code></pre></div>
+<p><img src="08-MatrizCorrelacao_files/figure-html/PerformanceAnalytics-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">bg=</span><span class="st">&quot;#fdf6e3&quot;</span>) 
+<span class="kw">require</span>(magrittr)
+<span class="kw">library</span>(corrr)
+CARROS <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">correlate</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">network_plot</span>(<span class="dt">min_cor=</span><span class="fl">0.6</span>)</code></pre></div>
+<p><img src="08-MatrizCorrelacao_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">bg=</span><span class="st">&quot;#fdf6e3&quot;</span>) 
+<span class="kw">library</span>(psych)
+<span class="kw">pairs.panels</span>(CARROS, <span class="dt">scale=</span><span class="ot">TRUE</span>)</code></pre></div>
+<p><img src="08-MatrizCorrelacao_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">bg=</span><span class="st">&quot;#fdf6e3&quot;</span>) 
+<span class="kw">library</span>(corrplot)
+<span class="kw">corrplot.mixed</span>(<span class="kw">cor</span>(CARROS), <span class="dt">order=</span><span class="st">&quot;hclust&quot;</span>, <span class="dt">tl.col=</span><span class="st">&quot;black&quot;</span>)</code></pre></div>
+<p><img src="08-MatrizCorrelacao_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">bg=</span><span class="st">&quot;#fdf6e3&quot;</span>) 
+<span class="kw">library</span>(ggcorrplot)
+<span class="kw">ggcorrplot</span>(<span class="kw">cor</span>(CARROS), <span class="dt">p.mat =</span> <span class="kw">cor_pmat</span>(CARROS), <span class="dt">hc.order=</span><span class="ot">TRUE</span>, <span class="dt">type=</span><span class="st">&#39;lower&#39;</span>)</code></pre></div>
+<p><img src="08-MatrizCorrelacao_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">bg=</span><span class="st">&quot;#fdf6e3&quot;</span>) 
+<span class="kw">library</span>(<span class="st">&quot;corrgram&quot;</span>)
+<span class="kw">corrgram</span>(CARROS, <span class="dt">order=</span><span class="ot">TRUE</span>,
+         <span class="dt">main=</span><span class="st">&quot;Carros&quot;</span>,
+         <span class="dt">lower.panel=</span>panel.shade, <span class="dt">upper.panel=</span>panel.pie,
+         <span class="dt">diag.panel=</span>panel.minmax, <span class="dt">text.panel=</span>panel.txt)</code></pre></div>
+<p><img src="08-MatrizCorrelacao_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">corrgram</span>(CARROS, <span class="dt">order=</span><span class="ot">TRUE</span>,
+         <span class="dt">upper.panel=</span>panel.cor, <span class="dt">main=</span><span class="st">&quot;Carros&quot;</span>)</code></pre></div>
+<p><img src="08-MatrizCorrelacao_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">corrgram</span>(CARROS, <span class="dt">order=</span><span class="ot">TRUE</span>,
+         <span class="dt">main=</span><span class="st">&quot;Carros)&quot;</span>,
+         <span class="dt">lower.panel=</span>corrgram<span class="op">::</span>panel.ellipse,
+         <span class="dt">upper.panel=</span>panel.bar, <span class="dt">diag.panel=</span>panel.minmax,
+         <span class="dt">col.regions=</span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;darkgoldenrod4&quot;</span>, <span class="st">&quot;burlywood1&quot;</span>,
+                                        <span class="st">&quot;darkkhaki&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>)))</code></pre></div>
+<p><img src="08-MatrizCorrelacao_files/figure-html/unnamed-chunk-5-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">bg=</span><span class="st">&quot;#fdf6e3&quot;</span>) 
+<span class="kw">library</span>(GGally)
+<span class="kw">library</span>(ggplot2)
+<span class="kw">ggcorr</span>(CARROS, <span class="dt">nbreaks=</span><span class="dv">8</span>, <span class="dt">palette=</span><span class="st">&#39;RdGy&#39;</span>, <span class="dt">label=</span><span class="ot">TRUE</span>, <span class="dt">label_size=</span><span class="dv">5</span>, <span class="dt">label_color=</span><span class="st">&#39;white&#39;</span>)</code></pre></div>
+<p><img src="08-MatrizCorrelacao_files/figure-html/ggally-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggpairs</span>(<span class="dt">data=</span>mtcars, <span class="co"># data.frame with variables</span>
+        <span class="dt">columns=</span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="co"># columns to plot, default to all.</span>
+        <span class="dt">title=</span><span class="st">&quot;Carros&quot;</span>, <span class="co"># title of the plot</span>
+        <span class="dt">colour =</span> <span class="st">&quot;am&quot;</span>, ggplot2<span class="op">::</span><span class="kw">aes</span>(<span class="dt">colour=</span>am)) <span class="co"># aesthetics, ggplot2 style</span></code></pre></div>
+<p><img src="08-MatrizCorrelacao_files/figure-html/ggally-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggpairs</span>(<span class="dt">data=</span>mtcars,
+             <span class="dt">columns=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, 
+             <span class="dt">upper =</span> <span class="kw">list</span>(<span class="dt">continuous =</span> <span class="st">&quot;density&quot;</span>),
+             <span class="dt">lower =</span> <span class="kw">list</span>(<span class="dt">combo =</span> <span class="st">&quot;facetdensity&quot;</span>),
+             <span class="dt">title=</span><span class="st">&quot;Carros&quot;</span>,
+             <span class="dt">colour =</span> <span class="st">&quot;am&quot;</span>, ggplot2<span class="op">::</span><span class="kw">aes</span>(<span class="dt">colour=</span>am)) </code></pre></div>
+<p><img src="08-MatrizCorrelacao_files/figure-html/ggally-3.png" width="672" /></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Densidade.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Mapa.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08-MatrizCorrelacao.Rmd",
+"text": "Edit"
+},
+"download": ["Galeria_de_Grafico.pdf", "Galeria_de_Grafico.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

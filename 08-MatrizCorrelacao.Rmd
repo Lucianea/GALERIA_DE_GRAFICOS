@@ -1,27 +1,7 @@
----
-title: "Matriz de Correlação Colorida"
-author: "DATAUNIRIO"
-output: 
-   html_document:
-     theme: flatly
-     highlight: tango
----
-<head>
-<style>
-body {
-    background-color:#fdf6e3;
-}
-</style>
-</head>
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-
-Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
+#Matriz de Correlação {#MatrizCorrelacao}
 
 ```{r cars}
-data(mtcars)
+require(car)
 data(mtcars)
 mtcars <- within(mtcars, {
   am <- factor(am, labels=c('Automático','Manual'))
@@ -43,6 +23,7 @@ chart.Correlation(CARROS, histogram=TRUE, pch=19)
 
 ```{r message=FALSE, warning=FALSE}
 par(bg="#fdf6e3") 
+require(magrittr)
 library(corrr)
 CARROS %>% correlate() %>% network_plot(min_cor=0.6)
 ```
@@ -108,4 +89,4 @@ ggpairs(data=mtcars,
 
 ```
 
-Clique [aqui](https://dataunirio.github.io/GALERIA_DE_GRAFICOS/) para voltar a página principal.
+

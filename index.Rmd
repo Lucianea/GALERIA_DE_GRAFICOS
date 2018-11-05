@@ -2,9 +2,7 @@
 title: "Galeria de Gráficos"
 author: "Steven Dutt-Ross & Luciane Alcoforado"
 year: "2019"
-date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
@@ -12,7 +10,7 @@ link-citations: yes
 colorlinks: yes
 lot: yes
 lof: yes
-fontsize: 12pt
+fontsize: 10pt
 monofont: "Source Code Pro"
 monofontoptions: "Scale=0.7"
 github-repo: Lucianea/GALERIA_DE_GRAFICOS
@@ -22,7 +20,7 @@ description: "Este é um projeto de livro aberto sobre elaboração de gráficos
 ```{r setup, include=FALSE}
 options(
   htmltools.dir.version = FALSE, formatR.indent = 2,
-  width = 55, digits = 4, warnPartialMatchAttr = FALSE, warnPartialMatchDollar = FALSE
+  width = 65, digits = 4, warnPartialMatchAttr = FALSE, warnPartialMatchDollar = FALSE
 )
 local({
   r = getOption('repos')

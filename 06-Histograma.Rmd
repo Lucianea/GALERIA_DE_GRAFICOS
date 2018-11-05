@@ -1,7 +1,7 @@
 #Histograma {#Histograma}
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-require(RcmdrMisc)
+#require(RcmdrMisc)
 ```
 
 
@@ -26,7 +26,7 @@ COR<-brewer.pal(5,"Blues")
 #COR
 hist(mtcars$mpg,col=COR,main="Histograma do MPG",xlab = "Milhas por Galão - MPG", ylab = "Frequência")
 COR<-brewer.pal(5,"YlGn")
-Hist(mtcars$mpg,col=COR, scale="percent",main="Histograma do MPG",xlab = "Milhas por Galão - MPG", ylab = "Percentual")
+hist(mtcars$mpg,col=COR, scale="percent",main="Histograma do MPG",xlab = "Milhas por Galão - MPG", ylab = "Percentual")
 
 ```
 
